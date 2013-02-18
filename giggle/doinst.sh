@@ -30,9 +30,9 @@ schema_install() {
     1>/dev/null
 }
 
-schema_install blah.schemas
-preserve_perms etc/rc.d/rc.INIT.new
-config etc/configfile.new
+#schema_install blah.schemas
+#preserve_perms etc/rc.d/rc.INIT.new
+#config etc/configfile.new
 
 if [ -x /usr/bin/update-desktop-database ]; then
   /usr/bin/update-desktop-database -q usr/share/applications >/dev/null 2>&1
@@ -47,13 +47,3 @@ if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
     /usr/bin/gtk-update-icon-cache usr/share/icons/hicolor >/dev/null 2>&1
   fi
 fi
-
-if [ -e usr/share/glib-2.0/schemas ]; then
-  if [ -x /usr/bin/glib-compile-schemas ]; then
-    /usr/bin/glib-compile-schemas usr/share/glib-2.0/schemas >/dev/null 2>&1
-  fi
-fi
-
-# If needed -- be sure to sed @LIBDIR@ inside the build script
-chroot . /usr/bin/gio-querymodules @LIBDIR@/gio/modules/ 1> /dev/null 2> /dev/null
-

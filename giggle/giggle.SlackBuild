@@ -63,7 +63,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar Jxvf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find . \
@@ -98,7 +98,7 @@ gzip -9 $PKG/usr/info/*.info*
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  <documentation> \
+  ABOUT-NLS AUTHORS COPYING NEWS ChangeLog README INSTALL \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 

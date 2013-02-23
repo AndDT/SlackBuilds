@@ -9,3 +9,5 @@ as well as GUI widgets for Qt, GTK and PyGTK.
 
 Check the ZBar home page for the latest release, mailing lists, etc.
     http://zbar.sourceforge.net/
+
+If you want to enable reading from video stream, pass VIDEO=yes to zbar.SlackBuild

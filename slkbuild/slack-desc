@@ -1,19 +1,13 @@
-# HOW TO EDIT THIS FILE:
-# The "handy ruler" below makes it easier to edit a package description.
-# Line up the first '|' above the ':' following the base package name, and
-# the '|' on the right side marks the last column you can put a character in.
-# You must make exactly 11 lines for the formatting to be correct.  It's also
-# customary to leave one space after the ':' except on otherwise blank lines.
+        |-----handy-ruler------------------------------------------------------|
+slkbuild: slkbuild (arch-like wrapper script for easy slackware packaging)
+slkbuild:
+slkbuild: This is a utility to build packages for Slackware and derivatives
+slkbuild: through the use of makepkg. slkbuild is a fork of buildpkg, which was
+slkbuild: used in Zenwalk. The fork was needed to remove some features that are
+slkbuild: specific to Zenwalk and add features that are not present there, like
+slkbuild: support for the x86_64 architecture.
+slkbuild:
+slkbuild:
+slkbuild:
+slkbuild:
 
-       |-----handy-ruler------------------------------------------------------|
-appname: appname (short description of app)
-appname:
-appname: Long description of appname, wrapped at 71 characters *after* the
-appname: colon following "appname" (and the 'handy ruler' should start at
-appname: that colon and be exactly 71 characters long).
-appname: If there is room, there might be a link to the homepage of the
-appname: application on one of these lines, but it's not necessary.
-appname:
-appname: The maximum number of lines prefixed by "appname:" is 11.
-appname: Lines without any other text should *not* have a space after the :
-appname:

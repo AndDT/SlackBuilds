@@ -1,0 +1,6 @@
+The TOIlet project attempts to create a free replacement for the ​FIGlet utility.
+TOIlet stands for “The Other Implementation’s letters”, coined after FIGlet’s “Frank, Ian and Glen’s letters”.
+TOIlet is in its very early development phase.
+It uses the powerful libcaca library to achieve various text-based effects. 
+TOIlet also aims for full FIGlet compatibility.
+It is currently able to load FIGlet fonts and perform horizontal smushing. 

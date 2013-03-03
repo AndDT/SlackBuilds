@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+makeself: makeself (Make self-extractable archives on Unix)
+makeself:
+makeself: makeself.sh is a small shell script that generates a self-extractable
+makeself: tgz archive from a directory. The resulting file appears as a shell
+makeself: script (many of those have a .run suffix), and can be launched as is.
+makeself: The archive will then uncompress itself to a temporary directory and
+makeself: an optionalarbitrary command will be executed (for example an
+makeself: installation script).This is pretty similar to archives generated
+makeself: with WinZip Self-Extractor inthe Windows world. Makeself archives 
+makeself: also include checksums for integrityself-validation (CRC and/or
+makeself: MD5 checksums).

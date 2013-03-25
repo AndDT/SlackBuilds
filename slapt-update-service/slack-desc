@@ -1,0 +1,12 @@
+                    |-----handy-ruler------------------------------------------------------|
+slapt-update-service: slapt-update-service (Service which notifies about package updates)
+slapt-update-service: 
+slapt-update-service: slapt-update-service is a DBus service which notifies about package
+slapt-update-service: updates.  It places an icon in the user's notification area when
+slapt-update-service: package updates are available.
+slapt-update-service: 
+slapt-update-service: 
+slapt-update-service: 
+slapt-update-service: 
+slapt-update-service: 
+slapt-update-service: 

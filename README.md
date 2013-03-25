@@ -44,3 +44,28 @@ FreeBASIC
 ~~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+PuTTY
+~~~~~
+Modified
+~~~~~~~~
+
+sbopkg
+~~~~~~
+Modified
+~~~~~~~~
+
+slapt-get
+~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+slapt-src
+~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+slapt-update-service
+~~~~~~~~~~~~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~

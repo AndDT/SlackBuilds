@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+sourcery: sourcery (a GTK+2 frontend to slapt-src)
+sourcery:
+sourcery: Sourcery is a graphical frontend to the slapt-src utility. It can be
+sourcery: used to build and install packages from SlackBuild and/or SLKBUILD
+sourcery: repositories.
+sourcery:
+sourcery:
+sourcery:
+sourcery:
+sourcery:
+sourcery:

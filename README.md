@@ -69,3 +69,13 @@ slapt-update-service
 ~~~~~~~~~~~~~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+sourcery
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+simpleconfig
+~~~~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~

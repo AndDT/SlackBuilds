@@ -55,9 +55,11 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
+mkdir -p $PKG/usr/bin
 zcat $CWD/patch.gz |patch
 make
 make install DESTDIR=$PKG
+install -c -m 755 $CWD/mkrepo $PKG/usr/bin
 
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 

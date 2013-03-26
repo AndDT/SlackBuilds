@@ -1,0 +1,12 @@
+      |-----handy-ruler------------------------------------------------------|
+gslapt: gslapt (a GTK version of slapt-get)
+gslapt:
+gslapt: gslapt is a graphical package manager for slackware and slackware
+gslapt: based distributions that uses the slapt-get command line interface
+gslapt: package management tool.
+gslapt:
+gslapt: Homepage: http://software.jaos.org/
+gslapt:
+gslapt: Please translate:
+gslapt: http://software.jaos.org/git/gslapt/tree/po
+gslapt:

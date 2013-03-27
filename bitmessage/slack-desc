@@ -1,0 +1,12 @@
+          |-----handy-ruler------------------------------------------------------|
+bitmessage: BitMessage (p2p program to send encrypted messages)
+bitmessage:
+bitmessage: Bitmessage is a P2P communications protocol used to send encrypted
+bitmessage: messages to another person or to many subscribers. It is
+bitmessage: decentralized and trustless, meaning that you need-not inherently
+bitmessage: trust any entities like root certificate authorities. It uses strong
+bitmessage: authentication which means that the sender of a message cannot be
+bitmessage: spoofed, and it aims to hide "non-content" data, like the sender and
+bitmessage: receiver of messages, from passive eavesdroppers like those running
+bitmessage: warrantless wiretapping programs.
+bitmessage:

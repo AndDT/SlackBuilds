@@ -84,3 +84,8 @@ gslapt
 ~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+bitmessage
+~~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~

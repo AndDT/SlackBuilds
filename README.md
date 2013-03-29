@@ -89,3 +89,8 @@ bitmessage
 ~~~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+perl-Authen-PAM
+~~~~~~~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~

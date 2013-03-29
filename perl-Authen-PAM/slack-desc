@@ -1,0 +1,12 @@
+               |-----handy-ruler------------------------------------------------------|
+perl-Authen-PAM: Authen::PAM (Perl interface to PAM library)
+perl-Authen-PAM:
+perl-Authen-PAM: The Authen::PAM module provides a Perl interface to the PAM library.
+perl-Authen-PAM: The only difference with the standard PAM interface is that instead
+perl-Authen-PAM: of passing a pam_conv struct which has an additional context
+perl-Authen-PAM: parameter appdata_ptr, you must only give an address to a
+perl-Authen-PAM: conversation function written in Perl
+perl-Authen-PAM:
+perl-Authen-PAM:
+perl-Authen-PAM:
+perl-Authen-PAM:

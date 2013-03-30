@@ -1,0 +1,5 @@
+Authen::PAM (Perl interface to PAM library)
+
+The Authen::PAM module provides a Perl interface to the PAM library.
+
+This requires /extra/source/pam from the slackware disk

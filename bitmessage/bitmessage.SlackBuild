@@ -25,7 +25,7 @@
 PRGNAM=bitmessage
 HASH=${HASH:-da7320d94c924f8f6206f478c0d32bdbb30d9126}
 VERSION=$(echo $HASH |cut -c -10)
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 ARCH=noarch
 
@@ -54,13 +54,12 @@ cd ..
 mkdir $PKG/opt
 mkdir -p $PKG/usr/bin
 mv ./PyBitmessage-$HASH $PKG/opt/PyBitmessage
-cat > $PKG/usr/bin/bitmessage << EOF
-#!/bin/sh
 
-cd /opt/PyBitmessage
-python ./bitmessagemain.py
-EOF
-chmod a+x $PKG/usr/bin/bitmessage
+mkdir -p $PKG/usr/share/icons/hicolor/{16x16,24x24}/apps/
+ln -s $PKG/opt/PyBitmessage/images/can-icon-24px.png $PKG/usr/share/icons/hicolor/24x24/apps/can.png
+ln -s $PKG/opt/PyBitmessage/images/can-icon-16px.png $PKG/usr/share/icons/hicolor/16x16/apps/can.png
+mkdir -p $PKG/usr/share/applications
+cp $CWD/bitmessage.desktop $PKG/usr/share/applications
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
@@ -70,6 +69,7 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-${VERSION}_git-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

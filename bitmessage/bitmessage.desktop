@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BitMessage
+Comment=P2P program to send encrypted messages
+Exec=python /opt/PyBitmessage/bitmessagemain.py
+Icon=can
+Terminal=false
+Type=Application
+Categories=Application;Network;
+StartupNotify=true
+Encoding=UTF-8

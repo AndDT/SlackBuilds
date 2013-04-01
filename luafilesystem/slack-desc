@@ -1,0 +1,12 @@
+             |-----handy-ruler------------------------------------------------------|
+luafilesystem: lua-filesystem (lua filesystem library)
+luafilesystem:
+luafilesystem: LuaFileSystem is a Lua library developed to complement the set
+luafilesystem: of functions related to filesystems offered by the standard
+luafilesystem: Lua distribution.
+luafilesystem: LuaFileSystem offers a portable way to access the underlying
+luafilesystem: directory structure and file attributes.
+luafilesystem:
+luafilesystem: homepage: http://keplerproject.github.com/luafilesystem/
+luafilesystem:
+luafilesystem:

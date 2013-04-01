@@ -1,0 +1,12 @@
+      |-----handy-ruler------------------------------------------------------|
+luasec: LuaSec (A Lua binding for OpenSSL library)
+luasec:
+luasec: A binding for OpenSSL library to provide TLS/SSL communication over
+luasec: LuaSocket. This version delegates to LuaSocket the TCP connection
+luasec: establishment between the client and server. Then LuaSec uses this
+luasec: connection to start a secure TLS/SSL session.
+luasec:
+luasec:
+luasec:
+luasec:
+luasec:

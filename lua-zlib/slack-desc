@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+lua-zlib: LuaZlib (Simple streaming interface to zlib for Lua)
+lua-zlib:
+lua-zlib: Simple streaming interface to zlib for Lua. Consists of two
+lua-zlib: functions: inflate and deflate. Both functions return "stream
+lua-zlib: functions" (takes a buffer of input and returns a buffer of output).
+lua-zlib:
+lua-zlib:
+lua-zlib:
+lua-zlib:
+lua-zlib:
+lua-zlib:

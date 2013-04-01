@@ -136,6 +136,12 @@ luasocket*
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
+prosody
+~~~~~~~
+TODO: add support for x86_64 patform
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
 usermin
 ~~~~~~~
 Used webmin SlackBuild by David Somero as template

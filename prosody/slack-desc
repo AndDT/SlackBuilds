@@ -1,0 +1,12 @@
+       |-----handy-ruler------------------------------------------------------|
+prosody: Prosody (Lua XMPP Server)
+prosody:
+prosody: Prosody is a modern flexible communications server for Jabber XMPP
+prosody: written in Lua. It aims to be easy to set up and configure, and
+prosody: light on resources. For developers it aims to be easy to extend and
+prosody: give a flexible system on which to rapidly develop added
+prosody: functionality, or prototype new protocols.
+prosody:
+prosody: Prosody is licensed under the permissive MIT/X11 license.
+prosody:
+prosody:

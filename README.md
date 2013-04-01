@@ -100,6 +100,42 @@ getmail
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
+* = I don't wanna you to see them before they will be approved ob SBo
+lua-zlib*
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luadbi*
+~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luaevent*
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luaexpat*
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luafilesystem
+~~~~~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luasec*
+~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+luasocket*
+~~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
 usermin
 ~~~~~~~
 Used webmin SlackBuild by David Somero as template

@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+luaevent: luaevent (binding of libevent to Lua)
+luaevent:
+luaevent: This is a binding of libevent to Lua. It will serve as a drop-in
+luaevent: replacement for copas, and eventually support more features (async
+luaevent: DNS, HTTP, RPC...).
+luaevent:
+luaevent:
+luaevent:
+luaevent:
+luaevent:
+luaevent:

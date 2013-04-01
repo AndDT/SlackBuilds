@@ -1,0 +1,61 @@
+#!/bin/sh
+# Description: Start or stop the Usermin server
+
+start=/etc/usermin/start
+stop=/etc/usermin/stop
+lockfile=/var/lock/subsys/usermin
+confFile=/etc/usermin/miniserv.conf
+pidFile=$(grep "^pidfile=" $confFile | sed -e 's/pidfile=//g')
+
+case "$1" in
+'start')
+	$start >/dev/null 2>&1 </dev/null
+	RETVAL=$?
+	if [ "$RETVAL" = "0" ]; then
+		touch $lockfile >/dev/null 2>&1
+		echo "Usermin Started"
+	fi
+	;;
+'stop')
+	$stop
+	RETVAL=$?
+	if [ "$RETVAL" = "0" ]; then
+		rm -f $lockfile
+	fi
+	pidfile=`grep "^pidfile=" $confFile | sed -e 's/pidfile=//g'`
+	if [ "$pidfile" = "" ]; then
+		pidfile=$pidFile
+	fi
+	echo "Usermin Stopped"
+	rm -f $pidfile
+	;;
+'status')
+	pidfile=`grep "^pidfile=" $confFile | sed -e 's/pidfile=//g'`
+	if [ "$pidfile" = "" ]; then
+		pidfile=$pidFile
+	fi
+	if [ -s $pidfile ]; then
+		pid=`cat $pidfile`
+		kill -0 $pid >/dev/null 2>&1
+		if [ "$?" = "0" ]; then
+			echo "Usermin (pid $pid) is running"
+			RETVAL=0
+		else
+			echo "Usermin is stopped"
+			RETVAL=1
+		fi
+	else
+		echo "Usermin is stopped"
+		RETVAL=1
+	fi
+	;;
+'restart')
+	$stop ; $start
+	RETVAL=$?
+	;;
+*)
+	echo "Usage: $0 { start | stop | restart }"
+	RETVAL=1
+	;;
+esac
+exit $RETVAL

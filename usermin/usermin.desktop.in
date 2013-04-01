@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Network;System;HardwareSettings;
+Exec=/usr/bin/xdg-open http_ssl_://localhost:_port_/
+Icon=network-wired
+StartupNotify=false
+Terminal=false
+Type=Application
+Name=Usermin
+Comment=Usermin is a web-based user interface for Unix-like systems

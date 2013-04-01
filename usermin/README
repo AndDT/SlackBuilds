@@ -1,0 +1,13 @@
+Usermin is a web-based interface for webmail, password changing, mail filters,
+fetchmail and much more. It is designed for use by regular non-root users on
+a Unix system, and limits them to tasks that they would be able to perform if
+logged in via SSH or at the console.
+
+If you need to start usermin at boot.
+The recommended way is to add the following to your /etc/rc.d/rc.local
+script and make sure rc.usermin has executable permissions set:
+	if [ -x /etc/rc.d/rc.usermin ]; then
+		/etc/rc.d/rc.usermin start
+	fi
+After the usermin service is started, point your web browser to 
+http://localhost:20000 and login as root to use usermin.

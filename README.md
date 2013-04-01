@@ -99,3 +99,8 @@ getmail
 ~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+usermin
+~~~~~~~
+Used webmin SlackBuild by David Somero as template
+~~~~~~~~~~~~~~~~~~

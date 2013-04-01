@@ -100,7 +100,9 @@ getmail
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-* = I don't wanna you to see them before they will be approved ob SBo
+* = I don't wanna you to see them before they will be approved on SBo because directory may be tar+gzipped, you may know md5sum and delete submission :(
+
+
 lua-zlib*
 ~~~~~~~~
 Wrote from scratch

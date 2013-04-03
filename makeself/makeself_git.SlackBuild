@@ -55,7 +55,7 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-sed -i -e "s,HEADER\=\`dirname \$0\`,HEADER\=\/usr\/libexec,g" makeself.sh
+sed -i -e "s,HEADER\=\`dirname \"\$0\"\`,HEADER\=\/usr\/libexec,g" makeself.sh
 mkdir -p $PKG/usr/bin
 mkdir -p $PKG/usr/man/man1
 mkdir -p $PKG/usr/libexec

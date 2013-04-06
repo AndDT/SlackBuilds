@@ -1,0 +1,12 @@
+  |-----handy-ruler------------------------------------------------------|
+ii: ii (IRC it - filesystem based IRC client)
+ii:
+ii: ii is a minimalistic FIFO and filesystem based IRC client. It creates
+ii: an irc directory tree with server, channel and nick name directories.
+ii: In every directory a FIFO file (in) and and normal file (out) is
+ii: placed.
+ii:
+ii: The in file is used to communicate with the servers and the out files
+ii: include the server messages. For every channel and every nick name
+ii: there will be new in and out files.
+ii:

@@ -102,25 +102,22 @@ getmail
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-* = I don't wanna you to see them before they will be approved on SBo because directory may be tar+gzipped, you may know md5sum and delete submission :(
-
-
-lua-zlib*
+lua-zlib
 ~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-luadbi*
+luadbi
 ~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-luaevent*
+luaevent
 ~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-luaexpat*
+luaexpat
 ~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
@@ -130,12 +127,12 @@ luafilesystem
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-luasec*
+luasec
 ~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
-luasocket*
+luasocket
 ~~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~

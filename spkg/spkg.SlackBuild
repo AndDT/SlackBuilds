@@ -25,7 +25,7 @@
 PRGNAM=spkg
 HASH=${HASH:-757909d4da195c95dc01f77407b6f20fbfcea40d}
 VERSION=$(echo $HASH |cut -c -10)_git
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 
 if [ -z "$ARCH" ]; then
@@ -76,6 +76,16 @@ if [ ! -f ./configure ]; then
   sh ./autogen.sh
 fi
 
+# It is recommended that you will compile static spkg binary,
+# but if you don't have archives with object files, spkg binary
+# will be linked dynamically
+# For this, you will have to recompile glib2 from slackware-14.0/source/l/glib2
+# with --enable-static=yes in glib2.SlackBuild and judy w/o --disable-static in its
+# SlackBuild.
+if [ -f /usr/lib/libglib-2.0.a -a -f /usr/lib/libJudy.a ]; then
+STATIC="--enable-static-spkg=only"
+fi
+
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -83,6 +93,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --bindir=/sbin \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
+  $STATIC \
   --with-gnu-ld \
   --build=$ARCH-slackware-linux
 

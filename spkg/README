@@ -1,0 +1,9 @@
+spkg is extremly fast package manager based on the idea
+of pkgtools from Slackware.
+
+It is recommended that you will compile static spkg binary.
+To short your time, I provide here libJudy.a and libglib-2.0.a.
+libJudy is easy to compile, but compiling glib2 with static libs
+is quite long process. So, make a backup of /usr/lib/{libJudy,libglib-2.0}.a
+and cp static-libs/* /usr/lib.
+It's quite a dirty way, but it will work, I think :)

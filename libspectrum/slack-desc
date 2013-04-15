@@ -1,0 +1,12 @@
+           |-----handy-ruler------------------------------------------------------|
+libspectrum: libspectrum
+libspectrum:
+libspectrum: libspectrum is a library which is designed to make the input and
+libspectrum: output of ZX Spectrum emulator files slightly easier than it would be
+libspectrum: otherwise. It should hopefully compile and run on Unix-based systems,
+libspectrum: Win32 and Mac OS X.
+libspectrum:
+libspectrum:
+libspectrum:
+libspectrum:
+libspectrum:

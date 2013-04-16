@@ -1,0 +1,20 @@
+--- slapt-src-0.3.2d.old/src/source.c	2012-09-03 23:19:42.000000000 +0300
++++ slapt-src-0.3.2d/src/source.c	2013-04-16 22:41:12.000000000 +0300
+@@ -815,7 +815,7 @@
+ {
+   char *filename = NULL;
+   char *command = NULL;
+-  int command_len = 38, r = 0;
++  int command_len = 35, r = 0;
+ 
+   if (chdir (sb->location) != 0) {
+     printf (gettext ("Failed to chdir to %s\n"), sb->location);
+@@ -825,7 +825,7 @@
+   if ( (filename = _get_pkg_filename (sb->version, config->pkgtag)) != NULL) {
+     command_len += strlen (filename);
+     command = slapt_malloc (sizeof *command * command_len);
+-    r = snprintf (command, command_len, "upgradepkg --reinstall --install-new %s", filename);
++    r = snprintf (command, command_len, "spkg -u --reinstall --install-new %s", filename);
+     if (r+1 != command_len) {
+       printf (gettext ("Failed to construct command string\n"));
+       exit (EXIT_FAILURE);

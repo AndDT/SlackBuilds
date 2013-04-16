@@ -24,8 +24,9 @@
 
 PRGNAM=slapt-get
 VERSION=${VERSION:-0.10.2o}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
+SPKG=${SPKG:-no}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -55,17 +56,20 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-mkdir -p $PKG/usr/bin
 zcat $CWD/patch.gz |patch
+if [ ! "$SPKG" = "no" ] ; then
+  patch -p1 < $CWD/slapt-get-0.10.2o-spkg.patch
+fi
 make
 make install DESTDIR=$PKG
-install -c -m 755 $CWD/mkrepo $PKG/usr/bin
+install -c -m 755 $CWD/mkrepo $PKG/usr/sbin
 
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cp $CWD/slack-{desc,required,suggests} $PKG/install
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
+mv $PKG/etc/slapt-get/slapt-getrc $PKG/etc/slapt-get/slapt-getrc.new
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

@@ -1,0 +1,12 @@
+       |-----handy-ruler------------------------------------------------------|
+gitosis: gitosis (software for hosting git repositories)
+gitosis:
+gitosis: Manage git repositories, provide access to them over SSH,
+gitosis: with tight access control and not needing shell accounts.
+gitosis:
+gitosis: gitosis aims to make hosting git repos easier and safer. It
+gitosis: manages multiple repositories under one user account, using SSH keys
+gitosis: to identify users. End users do not need shell accounts on the server,
+gitosis: they will talk to one shared account that will not let them run
+gitosis: arbitrary commands.
+gitosis:

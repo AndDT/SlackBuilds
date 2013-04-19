@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+minetest: Minetest (An InfiniMiner/Minecraft inspired game.)
+minetest:
+minetest: Minetest is an infinite-world block sandbox game and a game engine,
+minetest: inspired by InfiniMiner, Minecraft and the like. It has been in
+minetest: development and use since October 2010.
+minetest:
+minetest: Minetest is technically simple, stable and portable. It's lightweight
+minetest: enough to run on fairly old hardware. It currently runs playably on a
+minetest: laptop with Intel 945GM graphics. Though, as for the CPU, dualcore is
+minetest: recommended.
+minetest:

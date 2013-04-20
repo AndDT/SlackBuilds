@@ -1,5 +1,5 @@
-PRGNAM="name of application"
-VERSION="version of application"
+PRGNAM="gitosis"
+VERSION="dedb3dc63f_git"
 HOMEPAGE="https://github.com/tv42/gitosis"
 DOWNLOAD="https://github.com/tv42/gitosis/archive/dedb3dc63f413ed6eeba8082b7e93ad136b16d0d.tar.gz"
 MD5SUM="f1ae5683b89dbf979b18fcdf753c00c6"

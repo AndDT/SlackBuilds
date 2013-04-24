@@ -21,11 +21,10 @@
 #  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# Modified by AndDT on 20130202
+# Modified by AndDT on 20130424
 
 PRGNAM=darkplaces
-VERSION=${VERSION:-20121222}
+VERSION=${VERSION:-20130304}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -42,9 +41,9 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-SRCDIR=${SRCDIR:-engine20121222}
-SRCVER=${SRCVER:-enginesource20121222}
-MODVER=${MODVER:-darkplacesmod20121222}
+SRCDIR=${SRCDIR:-engine20130304}
+SRCVER=${SRCVER:-enginesource20130304}
+MODVER=${MODVER:-darkplacesmod20130301}
 
 # By default we won't add the darkplaces game mods
 DPMOD=${DPMOD:-"NO"}
@@ -121,8 +120,6 @@ for i in glx sdl ; do
   cat $CWD/$PRGNAM-$i.desktop > $PKG/usr/share/applications/$PRGNAM-$i.desktop ;
 done
 cat $CWD/quake.png > $PKG/usr/share/pixmaps/quake.png
-
-# Make application launcher execute SDL version if requested.
 
 if [ "$DPMOD" != "NO" ]; then
   unzip $CWD/$MODVER.zip

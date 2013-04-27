@@ -172,3 +172,8 @@ minetest
 ~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
+
+salixtools
+~~~~~~~~~~
+Based on SLKBUILD
+~~~~~~~~~~~~~~~~~

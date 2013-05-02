@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FUSE
+Comment=The Free Unix Spectrum Emulator
+Exec=fuse
+Icon=fuse
+Terminal=false
+Type=Application
+Categories=Game;Emulator;

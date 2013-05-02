@@ -1,0 +1,12 @@
+             |-----handy-ruler------------------------------------------------------|
+fuse-emulator: fuse-emulator (The Free Unix Spectrum Emulator)
+fuse-emulator:
+fuse-emulator: Fuse (the Free Unix Spectrum Emulator) was originally, and somewhat
+fuse-emulator: unsurprisingly, an emulator of the ZX Spectrum (a popular 1980s home
+fuse-emulator: computer, especially in the UK) for Unix. However, it has now also
+fuse-emulator: been ported to Mac OS X, which may or may not count as a Unix variant
+fuse-emulator: depending on your advocacy position and Windows which definitely isn't
+fuse-emulator: a Unix variant. Fuse also emulates some of the better-known ZX Spec-
+fuse-emulator: trum clones as well.
+fuse-emulator:
+fuse-emulator:

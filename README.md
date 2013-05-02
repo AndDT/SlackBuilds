@@ -184,6 +184,11 @@ Wrote from scratch
 ~~~~~~~~~~~~~~~~~~
 
 edelib
-~~~~~~~~
+~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+fuse-emulator
+~~~~~~~~~~~~~
 Wrote from scratch
 ~~~~~~~~~~~~~~~~~~

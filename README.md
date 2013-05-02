@@ -177,3 +177,13 @@ salixtools
 ~~~~~~~~~~
 Based on SLKBUILD
 ~~~~~~~~~~~~~~~~~
+
+ede
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~
+
+edelib
+~~~~~~~~
+Wrote from scratch
+~~~~~~~~~~~~~~~~~~

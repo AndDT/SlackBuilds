@@ -26,6 +26,7 @@ PRGNAM=SDL_ttf
 VERSION=${VERSION:-2.0.11}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+STATIC=${STATIC:-no}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -80,6 +81,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --with-gnu-ld \
   --with-x \
+  --enable-static=$STATIC \
   --build=$ARCH-slackware-linux
 
 make

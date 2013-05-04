@@ -24,24 +24,48 @@
 
 PRGNAM=FreeBASIC
 VERSION=${VERSION:-0.24.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
+EXAMPLES=${EXAMPLES:-no}
+DOCS=${DOCS:-no}
 
-ARCH=i386
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i486 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
+if [ "$ARCH" = "i486" ]; then
+  SLKCFLAGS="-march=i486 -mtune=i686"
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-march=i686 -mtune=i686"
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-fPIC"
+else
+  SLKCFLAGS=""
+fi
+
+if [ ! -f /var/log/packages/FreeBASIC* ]; then
+  tar -zxvf $CWD/FreeBASIC-$VERSION-linux.tar.gz  --strip-components=1 \
+    -C /usr FreeBASIC-$VERSION-linux/include FreeBASIC-$VERSION-linux/bin \
+    FreeBASIC-$VERSION-linux/lib
+fi
+
 set -e
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar zxvf $CWD/$PRGNAM-$VERSION-linux.tar.gz
-cd $PRGNAM-$VERSION-linux
+rm -rf $PRGNAM-$VERSION-source
+tar zxvf $CWD/$PRGNAM-$VERSION-source.tar.gz
+cd $PRGNAM-$VERSION-source
 chown -R root:root .
 find . \
  \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
@@ -49,14 +73,45 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-mkdir -p $PKG/usr
-./install.sh -i $PKG/usr
+if [ "$ARCH" = "x86_64" ]; then
+  sed -i -e "s:\/lib\/:\/lib64\/:g" makefile
+fi
+
+make \
+  prefix=/usr \
+  V=1 \
+  CFLAGS="-Wfatal-errors -O2 $SLKCFLAGS -I/usr/lib/libffi-3.0.11/include"
+
+mkdir -p $PKG/usr/bin
+mkdir -p $PKG/usr/include/freebasic
+mkdir -p $PKG/usr/lib/freebasic
+make install \
+  prefix=$PKG/usr V=1
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+if [ ! "$EXAMPLES" = "no" ]; then
+  cd doc
+    doxygen
+  cd ..
+  cp -r doc/html $PKG/usr/doc/$PRGNAM-$VERSION
+fi
+
+if [ ! "$EXAMPLES" = "no" ]; then
+  cp -r examples $PKG/usr/doc/$PRGNAM-$VERSION
+fi
+
+mkdir -p $PKG/usr/man/man1
+cat doc/fbc.1 | gzip -9 > $PKG/usr/man/man1/fbc.1.gz
 cp -a \
-  readme.txt changelog.txt \
+  readme.txt changelog.txt todo.txt  \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+if [ ! -f /var/log/packages/FreeBASIC* ]; then
+  rm /usr/bin/fbc
+  rm -rf /usr/include/freebasic
+  rm -rf /usr/lib/freebasic
+fi
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc

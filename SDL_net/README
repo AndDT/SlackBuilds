@@ -1,0 +1,3 @@
+This is an example portable network library for use with SDL.
+
+You can pass STATIC=yes to SlackBuild if you want statically linked library

@@ -19,3 +19,4 @@ if [ -e usr/share/icons/hicolor/icon-theme.cache ]; then
 fi
 
 config etc/X11/xinit/xinitrc.ede.new
+config etc/X11/xinit/xinitrc.pekwm.new

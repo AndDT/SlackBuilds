@@ -1,0 +1,5 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=XSession
+Name=PekWM
+Exec=/etc/X11/xinit/xinitrc.pekwm

@@ -1,0 +1,12 @@
+      |-----handy-ruler------------------------------------------------------|
+vblade: vblade (Virtual EtherDrive® blade AoE target)
+vblade:
+vblade: The vblade is the virtual EtherDrive (R) blade, a program that makes a
+vblade: seekable file available over an ethernet local area network (LAN) via
+vblade: the ATA over Ethernet (AoE) protocol.
+vblade: The seekable file is typically a block device like /dev/md0 but even
+vblade: regular files will work.  Sparse files can be especially convenient.
+vblade: When vblade exports the block storage over AoE it becomes a storage
+vblade: target.  Another host on the same LAN can access the storage if it has
+vblade: a compatible aoe kernel driver.
+vblade:

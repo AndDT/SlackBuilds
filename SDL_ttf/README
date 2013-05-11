@@ -1,3 +1,0 @@
-This library allows you to use TrueType fonts to render text in SDL applications.
-
-You can pass STATIC=yes to SlackBuild if you want statically linked library

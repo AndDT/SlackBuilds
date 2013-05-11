@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=bitmessage
-HASH=${HASH:-da7320d94c924f8f6206f478c0d32bdbb30d9126}
-VERSION=$(echo $HASH |cut -c -10)
+HASH=${HASH:-de98abb4662b941b63ee72f9ec7e21edeee34668}
+VERSION=$(echo $HASH |cut -c -10)_git
 BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 ARCH=noarch
@@ -39,8 +39,8 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf PyBitmessage
-tar zxvf $CWD/PyBitmessage-$HASH.tar.gz
+rm -rf PyBitmessage-$HASH
+tar zxvf $CWD/$HASH.tar.gz
 cd PyBitmessage-$HASH
 chown -R root:root .
 find . \
@@ -50,16 +50,10 @@ find . \
  -exec chmod 644 {} \;
 rm -rf .git
 
-cd ..
-mkdir $PKG/opt
-mkdir -p $PKG/usr/bin
-mv ./PyBitmessage-$HASH $PKG/opt/PyBitmessage
+make install DEST_APP=$PKG/opt/PyBitmessage DEST_SHARE=$PKG/usr/share
 
-mkdir -p $PKG/usr/share/icons/hicolor/{16x16,24x24}/apps/
-ln -s $PKG/opt/PyBitmessage/images/can-icon-24px.png $PKG/usr/share/icons/hicolor/24x24/apps/can.png
-ln -s $PKG/opt/PyBitmessage/images/can-icon-16px.png $PKG/usr/share/icons/hicolor/16x16/apps/can.png
-mkdir -p $PKG/usr/share/applications
-cp $CWD/bitmessage.desktop $PKG/usr/share/applications
+mv $PKG/usr/share/applications/pybitmessage/pybitmessage.desktop $PKG/usr/share/applications/pybitmessage.desktop
+rm -rf $PKG/usr/share/applications/pybitmessage
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
@@ -72,4 +66,4 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-${VERSION}_git-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

@@ -24,7 +24,7 @@
 
 PRGNAM=ede
 VERSION=2.0
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
 if [ -z "$ARCH" ]; then
@@ -97,8 +97,6 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/etc/X11/xinit
 install -m 755 $CWD/xinitrc.ede.new $PKG/etc/X11/xinit
-install -m 755 $CWD/xinitrc.pekwm.new $PKG/etc/X11/xinit
-cp $CWD/pekwm.desktop $PKG/usr/share/xsessions
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc

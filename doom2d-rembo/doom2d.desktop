@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Doom2D
+Icon=doom2d
+Exec=doom2d
+Terminal=false
+Categories=Game;ActionGame;

@@ -23,17 +23,23 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=minetest
-VERSION=${VERSION:-0.4.6}
+VERSION=0.4.7
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
-
+OPTIMIZE=${OPTIMIZE:-no} # It is very unstable, if compiling with -O2 (as for 0.4-dev)
+FREETYPE=${FREETYPE:-OFF} # Lots of warnings if you turn it on
 NUMJOBS=${NUMJOBS:--j2}
 
-for i in minetest common minetest_game survival build; do
+# VERSION=$(date +%Y%m%d)_git
+# https://github.com/minetest/${i}/archive/master.tar.gz
+# common survival build
+for i in minetest minetest_game; do
   if [ ! -f $i-$VERSION.tar.gz ]; then
-    wget https://github.com/minetest/${i}/archive/${VERSION}.tar.gz -O ./$i-$VERSION.tar.gz
+    wget https://github.com/minetest/${i}/archive/$VERSION.tar.gz -O ./$i-$VERSION.tar.gz
   fi
 done
+
+#exit 0
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -43,35 +49,36 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
+if [ "$OPTIMIZE" != "no" ]; then
+  OPTFLAG="-O2"
+fi
+
 CWD=$(pwd)
 TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-# It is very unstable, if compiling with -O2
-if [ "$ARCH" = "i486" ]; then
-  SLKCFLAGS="-march=i486 -mtune=i686"
-elif [ "$ARCH" = "i686" ]; then
-  SLKCFLAGS="-march=i686 -mtune=i686"
-elif [ "$ARCH" = "x86_64" ]; then
-  SLKCFLAGS="-fPIC"
-else
-  SLKCFLAGS=""
-fi
-
 set -e
+
+if [ "$ARCH" = "i486" ]; then
+  SLKCFLAGS="$OPTFLAG -march=i486 -mtune=i686"
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="$OPTFLAG -march=i686 -mtune=i686"
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="$OPTFLAG -fPIC"
+else
+  SLKCFLAGS="$OPTFLAG"
+fi
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
+rm -rf $PRGNAM-master
 tar zxvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 
 cd games
-  tar zxvf $CWD/common-$VERSION.tar.gz
-  mv `echo common*` common
-  tar zxvf $CWD/minetest_game-$VERSION.tar.gz
+  tar zxvf $CWD/minetest_game-$VERSION.tar.gz || exit 1
   mv `echo minetest_game*` minetest_game
 cd ..
 
@@ -82,7 +89,8 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-cmake \
+mkdir build && cd build
+cmake .. \
   -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
   -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
   -DCMAKE_INSTALL_PREFIX=/usr \
@@ -90,16 +98,20 @@ cmake \
   -DCUSTOM_EXAMPLE_CONF_DIR=/usr/doc/${PRGNAM}-${VERSION} \
   -DENABLE_GETTEXT=ON \
   -DCUSTOM_MANDIR=/usr/man \
-  -DCMAKE_BUILD_TYPE=Release .
+  -DENABLE_FREETYPE=${FREETYPE} \
+  -DCMAKE_BUILD_TYPE=Release || exit 1
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG
-
-cd $PKG/usr/share/minetest/games
-  tar zxvf $CWD/survival-$VERSION.tar.gz
-  mv `echo survival*` survival
-  tar zxvf $CWD/build-$VERSION.tar.gz
-  mv `echo build*` build
 cd ..
+
+#cd $PKG/usr/share/minetest/games
+#  tar zxvf $CWD/common-$VERSION.tar.gz || exit 1
+#  mv `echo common*` common
+#  tar zxvf $CWD/survival-$VERSION.tar.gz
+#  mv `echo survival*` survival
+#  tar zxvf $CWD/build-$VERSION.tar.gz
+#  mv `echo build*` build
+#cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true

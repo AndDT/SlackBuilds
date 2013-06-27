@@ -1,5 +1,5 @@
---- slapt-get-0.10.2o/src/package.h	2012-08-30 13:25:46.000000000 +0300
-+++ slapt-get-0.10.2o.new/src/package.h	2013-04-16 22:20:33.000000000 +0300
+--- slapt=get-0.10.2p/src/package.h	2012-08-30 13:25:46.000000000 +0300
++++ slapt=get-0.10.2p.new/src/package.h	2013-04-16 22:20:33.000000000 +0300
 @@ -25,9 +25,9 @@
  #define SLAPT_CHANGELOG_FILE "ChangeLog.txt"
  #define SLAPT_CHANGELOG_FILE_GZ "ChangeLog.txt.gz"

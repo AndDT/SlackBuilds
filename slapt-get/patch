@@ -1,0 +1,13 @@
+diff -u a/Makefile b/Makefile
+--- a/Makefile	2012-08-30 13:25:46.000000000 +0300
++++ b/Makefile	2013-03-25 13:07:22.000000000 +0200
+@@ -29,6 +29,9 @@
+ endif
+ CFLAGS?=-W -Werror -Wall -O2 -ansi -pedantic
+ CFLAGS+=$(DEFINES) -fPIC
++ifeq ($(ARCH),i386)
++	CFLAGS+=-march=i486 -mtune=i686
++endif
+ ifeq ($(ARCH),x86_64)
+ 	LIBDIR=/usr/lib64
+ endif

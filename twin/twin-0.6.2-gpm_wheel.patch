@@ -1,0 +1,33 @@
+--- twin-0.6.2/server/HW/hw_tty_linux/mouse_gpm.h.old	2009-09-26 16:28:38.000000000 +0300
++++ twin-0.6.2/server/HW/hw_tty_linux/mouse_gpm.h	2013-06-28 21:36:29.000000000 +0300
+@@ -117,10 +117,10 @@
+ static void GPM_MouseEvent(int fd, display_hw hw) {
+     int left = 0;
+     udat IdButtons, Buttons = 0;
++    static udat oldWheel = 0;
+     Gpm_Event GPM_EV;
+     
+     SaveHW;
+-    
+     /*
+      * All other parts of twin read and parse data from fds in big chunks,
+      * while Gpm_GetEvent() reads and parses only a single event at time.
+@@ -170,7 +170,17 @@
+ 	    (IdButtons & GPM_B_WHEEL_FWD ? HOLD_WHEEL_FWD : 0) |
+ #endif	
+ 	    0;
+-	
++	if (GPM_EV.wdy > 0) {
++		if (oldWheel & HOLD_WHEEL_REV) oldWheel &= ~HOLD_WHEEL_REV;
++		else oldWheel |= HOLD_WHEEL_REV;
++	}
++	else if (GPM_EV.wdy < 0) {
++		if (oldWheel & HOLD_WHEEL_FWD) oldWheel &= ~HOLD_WHEEL_FWD;
++		else oldWheel |= HOLD_WHEEL_FWD;
++	} else oldWheel = 0;
++	Buttons &= ~(HOLD_WHEEL_REV|HOLD_WHEEL_FWD);
++	Buttons |= oldWheel;
++
+ 	MouseEventCommon(GPM_EV.x, GPM_EV.y, GPM_EV.dx, GPM_EV.dy, Buttons);
+ 	
+     } while (loopN-- && ioctl(GPM_fd, FIONREAD, &left) >= 0 && left > 0);

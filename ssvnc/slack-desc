@@ -1,0 +1,12 @@
+     |-----handy-ruler------------------------------------------------------|
+ssvnc: ssvnc (The Enhanced TightVNC Viewer)
+ssvnc:
+ssvnc: The Enhanced TightVNC Viewer package started as a project to add some
+ssvnc: patches to the long neglected Unix TightVNC Viewer. However, now the
+ssvnc: front-end GUI, encryption, and wrapper scripts features possibly
+ssvnc: outweigh the Unix TightVNC Viewer improvements.
+ssvnc:
+ssvnc: The SSVNC Unix vncviewer can also be run without the SSVNC encryption
+ssvnc: GUI as an enhanced replacement for the xvncviewer, xtightvncviewer,
+ssvnc: etc., viewers. 
+ssvnc:

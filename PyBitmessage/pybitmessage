@@ -1,0 +1,4 @@
+#!/bin/sh
+cd /usr/libexec/pybitmessage
+exec python2 bitmessagemain.py
+

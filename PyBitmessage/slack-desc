@@ -1,0 +1,12 @@
+            |-----handy-ruler--------------------------------------------------|
+PyBitmessage: pybitmessage (Send encrypted messages)
+PyBitmessage:
+PyBitmessage: Bitmessage is a P2P communications protocol used to send
+PyBitmessage: encrypted messages to another person or to many subscribers. It
+PyBitmessage: is decentralized and trustless, meaning that you need-not
+PyBitmessage: inherently trust any entities like root certificate authorities.
+PyBitmessage: It uses strong authentication which means that the sender of a
+PyBitmessage: message cannot be spoofed, and it aims to hide "non-content"
+PyBitmessage: data, like the sender and receiver of messages, from passive
+PyBitmessage: eavesdroppers like those running warrantless wiretapping
+PyBitmessage: programs.

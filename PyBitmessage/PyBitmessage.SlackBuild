@@ -22,10 +22,10 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=bitmessage
-HASH=${HASH:-de98abb4662b941b63ee72f9ec7e21edeee34668}
-VERSION=$(echo $HASH |cut -c -10)_git
-BUILD=${BUILD:-2}
+PRGNAM=PyBitmessage
+HASH=${HASH:-34ca45160d972eaffd487f17b8e492a400698b24}
+VERSION=20131129_$(echo $HASH |cut -c -7)
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 ARCH=noarch
 
@@ -37,27 +37,30 @@ OUTPUT=${OUTPUT:-/tmp}
 set -e
 
 rm -rf $PKG
-mkdir -p $TMP $PKG $OUTPUT
+mkdir -p $TMP $PKG $OUTPUT $PKG/usr/bin $PKG/usr/man/man1 $PKG/usr/libexec
 cd $TMP
-rm -rf PyBitmessage-$HASH
+rm -rf $PRGNAM-$HASH
 tar zxvf $CWD/$HASH.tar.gz
-cd PyBitmessage-$HASH
+cd $PRGNAM-$HASH
 chown -R root:root .
 find . \
  \( -perm 777 -o -perm 775 -o -perm 711 -o -perm 555 -o -perm 511 \) \
  -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
+
 rm -rf .git
-
-make install DEST_APP=$PKG/opt/PyBitmessage DEST_SHARE=$PKG/usr/share
-
-mv $PKG/usr/share/applications/pybitmessage/pybitmessage.desktop $PKG/usr/share/applications/pybitmessage.desktop
-rm -rf $PKG/usr/share/applications/pybitmessage
+make install  PREFIX=/usr DESTDIR=$PKG
+install -m0755 $CWD/pybitmessage $PKG/usr/bin
+cp man/pybitmessage.1.gz $PKG/usr/man/man1
+cp desktop/can-icon.svg $PKG/usr/share/icons/hicolor/scalable/apps/pybitmessage.svg
+cp $CWD/pybitmessage.desktop $PKG/usr/share/applications
+mv $PKG/usr/share/pybitmessage $PKG/usr/libexec
+rm -rf $PKG/usr/share/man
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  $CWD/bitmessage.pdf \
+  COPYING INSTALL.md README.md LICENSE $CWD/bitmessage.pdf \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 

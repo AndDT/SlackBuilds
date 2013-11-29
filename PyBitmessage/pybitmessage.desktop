@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=PyBitmessage
+GenericName=PyBitmessage
+Comment=Send encrypted messages
+Exec=pybitmessage %F
+Icon=pybitmessage
+Terminal=false
+Categories=Network;InstantMessaging;Qt;

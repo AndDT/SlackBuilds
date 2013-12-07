@@ -1,0 +1,11 @@
+--- Makefile	2013-09-10 19:56:17.000000000 +0300
++++ Makefile.new	2013-12-07 15:01:49.000000000 +0200
+@@ -28,7 +28,7 @@
+ RMDIR ?= rm -rf
+ MKDIR ?= mkdir -p
+ 
+-CFLAGS ?= -O2 -Wall -g -MMD $(INCLUDES)
++CFLAGS ?= -O2 -Wall -g -MMD $(INCLUDES) $(EXTRACFLAGS)
+ RCFLAGS ?=
+ LDFLAGS ?=
+ LIBS ?=

@@ -1,0 +1,12 @@
+    |-----handy-ruler------------------------------------------------------|
+fasm: fasm (A fast and small assembler for x86 and x86-64)
+fasm:
+fasm: Flat assembler is a fast assembly language compiler for the x86
+fasm: architecture processors, which does multiple passes to optimize the
+fasm: size of generated machine code. It is self-compilable and versions
+fasm: for different operating systems are provided. All the versions are
+fasm: designed to be used from the system command line and they should not
+fasm: differ in behavior.
+fasm:
+fasm:
+fasm:

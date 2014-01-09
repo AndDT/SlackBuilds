@@ -1,0 +1,12 @@
+   |-----handy-ruler------------------------------------------------------|
+tgt: tgt (Linux target framework)
+tgt:
+tgt: Linux target framework (tgt) aims to simplify various SCSI target
+tgt: driver (iSCSI, Fibre Channel, SRP, etc) creation and maintenance.
+tgt:
+tgt: Tgt consists of kernel modules, user-space daemon, and user-space
+tgt: tools. iSCSI, iSER, and FCoE target drivers use only user-space
+tgt: daemon and tools (i.e. they are just user-space applications. They
+tgt: don't need any kernel support).
+tgt:
+tgt:

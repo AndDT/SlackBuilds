@@ -1,0 +1,12 @@
+      |-----handy-ruler------------------------------------------------------|
+brogue: Brogue is a Roguelike game by Brian Walker.
+brogue:
+brogue: Move around the dungeon with the mouse, the vi-keys (hjklyubn) or
+brogue: keypad keys. The arrow keys will also work, but they do not allow
+brogue: diagonal movement. Other commands are as listed in the help screen,
+brogue: which you can access by typing a question mark or clicking on the
+brogue: "Menu" button at the bottom of the screen.
+brogue:
+brogue: Your goal is to travel to the 26th subterranean floor of the dungeon,
+brogue: retrieve the Amulet of Yendor and return with it to the surface.
+brogue:

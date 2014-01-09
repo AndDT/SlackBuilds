@@ -1,0 +1,12 @@
+     |-----handy-ruler------------------------------------------------------|
+zsync: zsync (zsync is a file transfer program)
+zsync:
+zsync: zsync is a file transfer program. It allows you to download a file
+zsync: from a remote web server, where you have a copy of an older version
+zsync: of the file on your computer already. zsync downloads only the new
+zsync: parts of the file. It uses the same algorithm as rsync.
+zsync:
+zsync: The zsync web site is at http://zsync.moria.org.uk/ . There are
+zsync: likely to be frequent releases, so check back often.
+zsync:
+zsync:

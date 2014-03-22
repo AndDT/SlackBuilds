@@ -81,7 +81,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --build=$ARCH-slackware-linux
 
 make
-install -Dv -m644 ./src/mednafen-server $PKG/usr/bin/mednafen-server
+install -Dv -m755 ./src/mednafen-server $PKG/usr/bin/mednafen-server
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true

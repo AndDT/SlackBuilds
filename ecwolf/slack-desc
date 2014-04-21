@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+ecwolf: ecwolf (Advanced source port of Wolf3D and SoD based on Wolf4SDL)
+ecwolf: 
+ecwolf: ECWolf is an advanced source port for Wolfenstein 3D and Spear of
+ecwolf: Destiny based off of the Wolf4SDL code base. ECWolf pulls a
+ecwolf: substantial amount of code from ZDoom and aims to provide a wide
+ecwolf: array of mod editing capabilities without the need to modify the
+ecwolf: source code. Most importantly you will no longer need to replace
+ecwolf: entire data sets. With ECWolf you could for example add a weapon
+ecwolf: without needing to distribute every sprite in the game along with it.
+ecwolf: Mods will be neatly packaged into a single file just like they are
+ecwolf: for Doom.

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SHELLINABOXD_ARGS="-t -b"
+
+PID=`pidof -o %PPID /usr/bin/shellinaboxd`
+case "$1" in
+ start)
+   echo -ne "Starting shellinaboxd...\t\t\t\t"
+   [ -z "$PID" ] && /usr/bin/shellinaboxd ${SHELLINABOXD_ARGS}
+   if [ $? -gt 0 ]; then
+     echo -e '[\e[1;31m FAIL\e[0m ]'
+   else
+     echo -e '[\e[1;32m  OK \e[0m ]'
+   fi
+   ;;
+ stop)
+   echo -ne "Stopping shellinaboxd...\t\t\t\t"
+   [ ! -z "$PID" ]  && kill $PID &> /dev/null
+   if [ $? -gt 0 ]; then
+     echo -e '[\e[1;31m FAIL\e[0m ]'
+   else
+     echo -e '[\e[1;32m  OK \e[0m ]'
+   fi
+   ;;
+ restart)
+   $0 stop
+   $0 start
+   ;;
+ *)
+   echo "usage: $0 {start|stop|restart}"  
+esac
+exit 0
+

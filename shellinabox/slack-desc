@@ -1,0 +1,12 @@
+           |-----handy-ruler------------------------------------------------------|
+shellinabox: shellinabox (publish command line shell through AJAX interface)
+shellinabox:
+shellinabox: Shellinabox can export arbitrary command line programs to any
+shellinabox: JavaScript enabled web browser. By default, it prompts for username
+shellinabox: and password and then exports a SSL/TLS encrypted login shell.
+shellinabox: Shellinabox provides a VT100 compatible terminal emulator that runs
+shellinabox: within any modern browser.
+shellinabox:
+shellinabox:
+shellinabox: Project page: http://code.google.com/p/shellinabox/
+shellinabox:

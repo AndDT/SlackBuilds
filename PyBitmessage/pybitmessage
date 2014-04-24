@@ -1,4 +1,3 @@
 #!/bin/sh
 cd /usr/libexec/pybitmessage
-exec python2 bitmessagemain.py
-
+LD_LIBRARY_PATH="/opt/openssl-compat-bitcoin/lib/" exec python2 bitmessagemain.py

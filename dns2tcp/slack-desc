@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+dns2tcp: Dns2tcp (a tool for relaying TCP connections over DNS)
+dns2tcp:
+dns2tcp: Dns2tcp is a tool for relaying TCP connections over DNS. There is
+dns2tcp: only a simple identification mecanism but no encryption : DNS
+dns2tcp: encapsulation must be considered as an unsecure and anonymous
+dns2tcp: transport layer. Resources should be public external services like
+dns2tcp: ssh, ssltunnel
+dns2tcp:
+dns2tcp:
+dns2tcp:
+dns2tcp:

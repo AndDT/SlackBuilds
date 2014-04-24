@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=ECWolf
+Version=1.0
+GenericName=Source port of Wolf3D and SoD based on Wolf4SDL
+Comment=Advanced source port of Wolf3D and SoD based on Wolf4SDL
+Exec=ecwolf
+Icon=ecwolf
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+StartupNotify=false
+

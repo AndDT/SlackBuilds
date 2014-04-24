@@ -94,6 +94,15 @@ cd build
   if [ "$PATCHUTIL" = "ON" ]; then install -Dm755 ./tools/patchutil/patchutil $PKG/usr/games/ecwolf-patchutil ; fi
 cd ..
 
+mkdir -p $PKG/usr/share/applications
+cp $CWD/ecwolf.desktop $PKG/usr/share/applications
+# Copy icons to the right place
+ICONSIZES="128 96 72 64 48 32 24 22 16"
+for i in $ICONSIZES; do
+mkdir -p $PKG/usr/share/icons/hicolor/$i\x$i/apps;
+cp $CWD/icons/ecwolf-$i.png $PKG/usr/share/icons/hicolor/$i\x$i/apps/ecwolf.png;
+done;
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
@@ -103,6 +112,7 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

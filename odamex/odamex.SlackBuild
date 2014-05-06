@@ -89,6 +89,7 @@ install -s -m0755 build/master/odamast $PKG/usr/games
 mkdir -p $PKG/usr/share/games/doom
 install -m0644 $PRGNAM.wad $PKG/usr/share/games/doom
 
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a CHANGELOG LICENSE MAINTAINERS README $PKG/usr/doc/$PRGNAM-$VERSION
 tar cvf - config-samples |gzip -9 > $PKG/usr/doc/$PRGNAM-$VERSION/config-samples.tar.gz
 

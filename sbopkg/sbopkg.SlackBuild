@@ -7,7 +7,7 @@
 # Written by Chess Griffin <chess@chessgriffin.com>.
 # Based on the SlackBuilds.org template.
 
-# Modified by Andrew Tkalia <anddt@yandex.ru>
+# Modified by Andrew Tkalia <anddt@yandex.ua>
 
 PRGNAM=sbopkg
 VERSION=${VERSION:-0.36.0}

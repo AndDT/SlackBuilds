@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Slightly modified by Robby Workman <rworkman@slackbuilds.org>
-# Added some patches from git://github.com/pld-linux/twin.git by Andrew Tkalia <anddt@yandex.ru>
+# Added some patches from git://github.com/pld-linux/twin.git by Andrew Tkalia <anddt@yandex.ua>
 
 PRGNAM=twin
 VERSION=${VERSION:-0.6.2}

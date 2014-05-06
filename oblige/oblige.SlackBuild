@@ -5,7 +5,7 @@
 # Written by B. Watson (yalhcru@gmail.com)
 
 # Licensed under the WTFPL. See http://www.wtfpl.net/txt/copying/ for details.
-# Upgraded to 4.28b by Andrew Tkalia <anddt@yandex.ru> and PKGBUILD from AUR (Jan Cholasta <grubber at grubber cz>)
+# Upgraded to 4.28b by Andrew Tkalia <anddt@yandex.ua> and PKGBUILD from AUR (Jan Cholasta <grubber at grubber cz>)
 
 PRGNAM=oblige
 VERSION=${VERSION:-6.05}

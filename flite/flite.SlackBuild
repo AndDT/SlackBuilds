@@ -2,7 +2,7 @@
 
 # Slackware build script for flite
 # Written by Martin Lefebvre (dadexter@sekurity.com)
-# Modified by Andrew Tkalia <anddt@yandex.ru> on 20130413
+# Modified by Andrew Tkalia <anddt@yandex.ua> on 20130413
 
 PRGNAM=flite
 VERSION=1.4

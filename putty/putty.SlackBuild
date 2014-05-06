@@ -10,7 +10,7 @@
 # Maintained by Binh Nguyen <binhvng@gmail.com>
 # from version 0.62
 
-# Modified by Andrew Tkalia <anddt@yandex.ru>
+# Modified by Andrew Tkalia <anddt@yandex.ua>
 # 20130213: added .desktop link and icons
 
 PRGNAM=putty

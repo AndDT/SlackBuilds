@@ -1,0 +1,12 @@
+     |-----handy-ruler------------------------------------------------------|
+pjsip: pjsip (Open source SIP stack and media stack)
+pjsip: PJSIP is a free and open source multimedia communication library
+pjsip: written in C language implementing standard based protocols such as
+pjsip: SIP, SDP, RTP, STUN, TURN, and ICE. It combines signaling protocol
+pjsip: (SIP) with rich multimedia framework and NAT traversal functionality
+pjsip: into high level API that is portable and suitable for almost any type
+pjsip: of systems ranging from desktops, embedded systems, to mobile
+pjsip: handsets.
+pjsip:
+pjsip: Homepage: http://www.pjsip.org/
+pjsip:

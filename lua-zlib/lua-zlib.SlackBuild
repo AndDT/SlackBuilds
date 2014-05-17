@@ -2,7 +2,7 @@
 
 # Slackware build script for lua-zlib
 
-# Copyright 2013, Andrew Tkalia <anddt@yandex.ua>, Ukraine, Kyiv
+# Copyright 2013, Andrew Tkalia <anddt@yandex.ru>, Ukraine, Kyiv
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=lua-zlib
-HASH=${HASH:-2c94736ee8e88d7d9b12254f226a1e598f433756}
-VERSION=$(echo $HASH |cut -c -10)
+HASH=${HASH:-c0014bcbc4c3fd65ba3519b10965f0c184c1a059}
+VERSION=20140201_$(echo $HASH |cut -c -7)
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -61,7 +61,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$HASH
-tar xvf $CWD/$PRGNAM-$HASH.tar.gz
+tar xvf $CWD/$HASH.tar.gz
 cd $PRGNAM-$HASH
 chown -R root:root .
 find . \
@@ -72,7 +72,7 @@ find . \
 
 # Getting default cflags from config then append slkcflags to them and passing to make
 _CFLAGS=`cat Makefile |grep ^LNX_CFLAGS |sed "s,LNX_CFLAGS\ \ \=,,g"`" "${SLKCFLAGS}
-_LIBDIR=`cat Makefile |grep ^LIBDIR |sed "s,LIBDIR\ \ \ \=,,g"`${LIBDIRSUFFIX}
+_LIBDIR=`cat Makefile |grep ^LIBDIR |sed "s,LIBDIR\ \ \ ?\=,,g"`${LIBDIRSUFFIX}
 make linux \
   LUAPATH=/usr/share/lua/5.1 \
   LUACPATH=/usr/lib${LIBDIRSUFFIX}/lua/5.1 \
@@ -98,4 +98,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-${VERSION}_git-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-${VERSION}-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

@@ -2,7 +2,7 @@
 
 # Slackware build script for pjsip
 
-# Copyright 2013-2014, Andrew Tkalia <anddt@yandex.ua>, Ukraine, Kyiv
+# Copyright 2013-2014, Andrew Tkalia <anddt@yandex.ru>, Ukraine, Kyiv
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,7 +24,7 @@
 
 PRGNAM=pjsip
 VERSION=${VERSION:-2.2.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 
 if [ -z "$ARCH" ]; then
@@ -93,6 +93,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --prefix=/usr \
   --with-external-speex \
   --with-external-pa \
+  --with-external-gsm \
   --enable-epoll \
   --enable-shared \
   --enable-libsamplerate=${LIBSAMPLERATE} \
@@ -103,6 +104,11 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-silk=${SILK} \
   --enable-opencore-amr=${AMR} \
   --enable-ffmpeg=${FFMPEG} \
+  --enable-g711-codec=yes \
+  --enable-l16-codec=yes \
+  --enable-g722-codec=yes \
+  --enable-g7221-codec=yes \
+  --enable-ilbc-codec=yes \
   --build=$ARCH-slackware-linux
 
 make dep && make

@@ -71,6 +71,7 @@ find -L . \
 
 make \
   PREFIX=/usr \
+  MULTILIB=lib${LIBDIRSUFFIX} \
   INSTALL_LIB=/usr/lib${LIBDIRSUFFIX} \
   INSTALL_MAN=/usr/man/man1
 

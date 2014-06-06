@@ -1,8 +1,11 @@
 #!/bin/bash
 
-SHELLINABOXD_ARGS="-t -b"
+SHELLINABOXD_ARGS="-t --background=/var/run/shellinaboxd.pid --css=/usr/doc/shellinabox-2.14/white-on-black.css"
 
-PID=`pidof -o %PPID /usr/bin/shellinaboxd`
+if [ -f /var/run/shellinaboxd.pid ]; then
+  PID=$(cat /var/run/shellinaboxd.pid)
+fi
+
 case "$1" in
  start)
    echo -ne "Starting shellinaboxd...\t\t\t\t"
@@ -15,7 +18,7 @@ case "$1" in
    ;;
  stop)
    echo -ne "Stopping shellinaboxd...\t\t\t\t"
-   [ ! -z "$PID" ]  && kill $PID &> /dev/null
+   [ ! -z "$PID" ]  && kill $PID &> /dev/null ; rm /var/run/shellinaboxd.pid
    if [ $? -gt 0 ]; then
      echo -e '[\e[1;31m FAIL\e[0m ]'
    else

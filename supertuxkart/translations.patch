@@ -1,0 +1,15 @@
+--- SuperTuxKart-0.8.1/src/io/file_manager.cpp	2014-06-28 15:55:53.000000000 +0300
++++ SuperTuxKart-0.8.1/src/io/file_manager.cpp.new	2014-06-28 16:02:39.000000000 +0300
+@@ -475,7 +475,12 @@
+  */
+ std::string FileManager::getTranslationDir() const
+ {
++#if !defined(TRANSLATION_DIR) && !defined(__APPLE__) && !defined(WIN32)
++#define TRANSLATION_DIR "/usr/share/locale"
++    return TRANSLATION_DIR;
++#else
+     return m_root_dir+"data/po/";
++#endif
+ }   // getTranslationDir
+ 
+ //-----------------------------------------------------------------------------

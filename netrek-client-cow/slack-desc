@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                 |-----handy-ruler------------------------------------------------------|
+netrek-client-cow: netrek-client-cow (multiplayer battle game with a Star Trek theme.)
+netrek-client-cow:
+netrek-client-cow: Netrek is a multi-player battle simulation with a Star Trek theme.
+netrek-client-cow: As a player, you captain starships to engage enemy vessels, bomb
+netrek-client-cow: armies and invade planets in order to expand your team's space empire.
+netrek-client-cow: The ultimate goal is to genocide the enemy race, but the carnage of
+netrek-client-cow: battles along the way is ruthlessly fast paced and a lot of fun!
+netrek-client-cow:
+netrek-client-cow:
+netrek-client-cow: Project page: http://www.netrek.org/
+netrek-client-cow:

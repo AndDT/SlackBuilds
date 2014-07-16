@@ -42,8 +42,13 @@ LIBS=-lm -lz $(FLTK_LIBS)
 #----- OBLIGE Objects ----------------------------------------------
 
 OBJS=	$(OBJ_DIR)/main.o      \
+	$(OBJ_DIR)/m_about.o  \
 	$(OBJ_DIR)/m_cookie.o  \
+	$(OBJ_DIR)/m_console.o \
+	$(OBJ_DIR)/m_dialog.o  \
 	$(OBJ_DIR)/m_lua.o     \
+	$(OBJ_DIR)/m_manage.o  \
+	$(OBJ_DIR)/m_options.o  \
 	$(OBJ_DIR)/m_spots.o   \
 	$(OBJ_DIR)/lib_argv.o  \
 	$(OBJ_DIR)/lib_file.o  \
@@ -85,11 +90,7 @@ OBJS=	$(OBJ_DIR)/main.o      \
 	$(OBJ_DIR)/twister.o   \
 	$(OBJ_DIR)/tx_forge.o  \
 	$(OBJ_DIR)/tx_skies.o  \
-	$(OBJ_DIR)/ui_about.o  \
 	$(OBJ_DIR)/ui_build.o  \
-	$(OBJ_DIR)/ui_chooser.o \
-	$(OBJ_DIR)/ui_console.o \
-	$(OBJ_DIR)/ui_dialog.o \
 	$(OBJ_DIR)/ui_game.o   \
 	$(OBJ_DIR)/ui_hyper.o  \
 	$(OBJ_DIR)/ui_level.o  \
@@ -97,7 +98,9 @@ OBJS=	$(OBJ_DIR)/main.o      \
 	$(OBJ_DIR)/ui_module.o \
 	$(OBJ_DIR)/ui_rchoice.o \
 	$(OBJ_DIR)/ui_play.o   \
-	$(OBJ_DIR)/ui_window.o
+	$(OBJ_DIR)/ui_window.o \
+	\
+	$(OBJ_DIR)/zf_menu.o
 
 $(OBJ_DIR)/%.o: gui/%.cc
 	$(CXX) $(CXXFLAGS) -o $@ -c $<

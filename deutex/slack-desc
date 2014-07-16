@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+deutex: deutex (A WAD file composer for Doom, Heretic, Hexen and Strife)
+deutex:
+deutex: DeuTex and DeuSF are programs than can do many things with Doom,
+deutex: Heretic, Hexen and Strife wad files such as extracting and inserting
+deutex: graphics, sounds, levels and other resources. See the manual for
+deutex: details (dtexman6.txt).
+deutex:
+deutex:
+deutex:
+deutex: Project page: http://www.teaser.fr/~amajorel/deutex/
+deutex:

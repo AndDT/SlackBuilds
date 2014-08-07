@@ -1,0 +1,113 @@
+#!/bin/sh
+
+# Slackware build script for eduke32
+
+# Written by B. Watson (yalhcru@gmail.com)
+
+# Licensed under the WTFPL. See http://www.wtfpl.net/txt/copying/ for details.
+
+PRGNAM=eduke32
+VERSION=${VERSION:-20140722_4552}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i486 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+if [ "$ARCH" = "i486" ]; then
+  SLKCFLAGS="-O2 -march=i486 -mtune=i686 -I/usr/include/SDL2"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "pentium3" ]; then
+  SLKCFLAGS="-O2 -march=pentium3 -mtune=generic -mmmx -I/usr/include/SDL2"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC -I/usr/include/SDL2"
+  LIBDIRSUFFIX="64"
+fi
+
+set -e
+
+SRCVER=${VERSION/_/-}
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT $PKG/usr/doc/$PRGNAM-$VERSION
+cd $TMP
+rm -rf ${PRGNAM}_${SRCVER}
+tar Jxvf $CWD/${PRGNAM}_src_${SRCVER}.tar.xz
+cd ${PRGNAM}_${SRCVER}
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+ -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+if [ "${VPX:-no}" != "yes" ]; then
+  VPXFLAG="USE_LIBVPX=0"
+fi
+
+# On some systems, the game spits out tons of warnings:
+# Error: glGetTexLevelParameteriv returned GL_FALSE!
+# These don't seem to actually hurt anything (the game looks
+# and plays fine), so let's get rid of them to clean up
+# the log output.
+sed -i '/"Error: glGetTexLevelParameteriv/d' build/src/texcache.c
+
+# Mildly confusing: the Makefile uses ARCH for arch-specific cflags
+make ARCH="$SLKCFLAGS" $VPXFLAG
+
+# Build the utilities, if requested.
+if [ "${BUILD_UTILS:-yes}" = "yes" ]; then
+  make utils ARCH="$SLKCFLAGS"
+
+  for i in kextract kgroup transpal wad2art wad2map kmd2tool md2tool generateicon cacheinfo arttool givedepth mkpalette unpackssi bsuite ivfrate; do
+    install -s -D -m0755 $i $PKG/usr/libexec/eduke32/$i
+  done
+
+fi
+
+install -D -m0755 $PRGNAM $PKG/usr/libexec/$PRGNAM/$PRGNAM
+install -D -m0755 mapster32 $PKG/usr/libexec/$PRGNAM/mapster32
+
+mkdir -p $PKG/usr/man/man6
+gzip -9c $CWD/$PRGNAM.6 > $PKG/usr/man/man6/$PRGNAM.6.gz
+
+# Wrapper script to make things behave nicer
+install -D -m0755 $CWD/$PRGNAM.wrapper  $PKG/usr/games/$PRGNAM
+( cd $PKG/usr/games ; ln -s $PRGNAM mapster32 )
+
+# Mapster help files
+mkdir -p $PKG/usr/share/games/$PRGNAM
+cd package/sdk
+cp *.hlp *.HLP names.h tiles.cfg $PKG/usr/share/games/$PRGNAM
+cp -r samples $PKG/usr/share/games/$PRGNAM/samples
+cd -
+
+mkdir -p $PKG/usr/share/applications
+cp $CWD/mapster32.desktop $CWD/$PRGNAM.desktop $PKG/usr/share/applications
+
+mkdir -p $PKG/usr/share/pixmaps
+cp $CWD/$PRGNAM.png $PKG/usr/share/pixmaps
+
+cp build/doc/* build/*.txt $CWD/README*.txt  $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+( cd $PKG/usr/share/games/$PRGNAM
+  ln -s ../../../doc/$PRGNAM-$VERSION/README_game_data.txt . )
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

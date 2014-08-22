@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+               |-----handy-ruler------------------------------------------------------|
+vegastrike-data: vegastrike-data (data for Vega Strike)
+vegastrike-data:
+vegastrike-data: Vega Strike allows players to explore a vastly dynamic universe where
+vegastrike-data: frontiers collide and you're just a pilot trying to make ends meet.
+vegastrike-data: How? That's your decision. Vega Strike is designed as a non-linear
+vegastrike-data: gaming experience, where you choose what action you want to take.
+vegastrike-data: Vega Strike features a dynamic trading economy, allowing your
+vegastrike-data: character to operate as a merchant. Discover what trade routes bring
+vegastrike-data: in the most profit, what commodities make you the most money given
+vegastrike-data: your ship's cargo space limitations, accept cargo missions and learn
+vegastrike-data: to avoid areas of danger (repairs eat into your profits!).

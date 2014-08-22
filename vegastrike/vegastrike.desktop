@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Game;Simulation;
+Comment=3D OpenGL spaceflight simulator
+Exec=/usr/bin/vegastrike
+Path=/usr/share/vegastrike
+GenericName=3D action-space-sim allowing player to trade and bounty hunt in a vast universe
+Icon=vegastrike
+Name=Vega Strike
+StartupNotify=true
+Terminal=false
+Type=Application

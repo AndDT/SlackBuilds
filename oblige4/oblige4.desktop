@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Name=Oblige4
+GenericName=Random level generator for various classic FPS games
+Icon=oblige4
+Exec=Oblige4
+Terminal=false
+Categories=Game;ActionGame;

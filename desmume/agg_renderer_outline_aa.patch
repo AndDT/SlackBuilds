@@ -1,0 +1,11 @@
+--- agg_renderer_outline_aa.h	2014-08-24 16:37:39.000000000 +0300
++++ agg_renderer_outline_aa.h.new	2014-08-20 15:51:29.000000000 +0300
+@@ -1375,7 +1375,7 @@
+         //---------------------------------------------------------------------
+         void profile(const line_profile_aa& prof) { m_profile = &prof; }
+         const line_profile_aa& profile() const { return *m_profile; }
+-        line_profile_aa& profile() { return *m_profile; }
++        line_profile_aa& profile() { return const_cast<line_profile_aa&>(*m_profile); }
+ 
+         //---------------------------------------------------------------------
+         int subpixel_width() const { return m_profile->subpixel_width(); }

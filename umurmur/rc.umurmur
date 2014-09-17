@@ -1,0 +1,32 @@
+#!/bin/sh
+
+start() {
+  echo "Starting umurmur..."
+  /usr/bin/umurmurd -c /etc/umurmur/umurmur.conf -p /var/run/umurmur.pid -r
+}
+
+stop() {
+  echo "Stopping umurmur..."
+  kill $(cat /var/run/umurmur.pid) && rm /var/run/umurmur.pid
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    sleep 1
+    start
+    ;;
+  *)
+    printf "Usage: $N {start|stop|restart}\n"
+    exit 1
+    ;;
+esac
+
+
+

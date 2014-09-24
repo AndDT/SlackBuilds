@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+    |-----handy-ruler------------------------------------------------------|
+zzuf: zzuf (Transparent application input fuzzer.)
+zzuf:
+zzuf: zzuf is a transparent application input fuzzer. It works by
+zzuf: intercepting file operations and changing random bits in the
+zzuf: program's input. zzuf's behaviour is deterministic, making it easy to
+zzuf: reproduce bugs.
+zzuf:
+zzuf: For instructions and examples on how to use zzuf, see the manual page
+zzuf: and the website at <http://caca.zoy.org/wiki/zzuf>.
+zzuf:
+zzuf:

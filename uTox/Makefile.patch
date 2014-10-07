@@ -1,0 +1,11 @@
+--- Makefile	2014-10-08 01:06:10.000000000 +0300
++++ Makefile.new	2014-10-08 01:13:36.000000000 +0300
+@@ -23,6 +23,8 @@
+ 	LDFLAGS += -lresolv -ldl
+ endif
+ 
++CFLAGS += $(SLKCFLAGS)
++
+ DESTDIR ?=
+ PREFIX ?= /usr/local
+ 

@@ -1,7 +1,6 @@
 #!/bin/sh
 
-# Slackware build script for toxcore
-# libconfig, libsodium, check, opus, vpx
+# Slackware build script for uTox
 
 # Copyright 2014, Andrew Tkalia <anddt@ukr.net>, Ukraine, Kyiv
 # All rights reserved.
@@ -23,14 +22,10 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=toxcore
-VERSION=${VERSION:-20141006_116c7f7}
+PRGNAM=uTox
+VERSION=${VERSION:-20141007_0a02d0c}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
-
-EPOLL=${EPOLL:-yes}
-SHARED=${SHARED:-yes}
-STATIC=${STATIC:-no}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -74,38 +69,22 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-autoreconf -i
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./configure \
-  --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --enable-ntox=yes \
-  --enable-daemon=yes \
-  --enable-epoll=${EPOLL} \
-  --enable-shared=${SHARED} \
-  --enable-static=${STATIC} \
-  --build=$ARCH-slackware-linux
-
-make
-#test -f /var/log/packages/check-* && make check
-make install DESTDIR=$PKG
+patch < $CWD/Makefile.patch
+make PREFIX=/usr
+make install PREFIX=/usr DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  docs/* AUTHORS ChangeLog COPYING INSTALL NEWS README.md \
+  INSTALL.md LICENSE README.md \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

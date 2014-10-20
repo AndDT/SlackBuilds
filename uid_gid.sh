@@ -291,11 +291,52 @@ case "$1" in
     groupadd -g 283 icecream
     useradd -u 283 -g icecream -d /var/cache/icecream icecream
     ;;
+  mongodb)
+    groupadd -g 285 mongo
+    useradd -u 285 -d /var/lib/mongodb -s /bin/false -g mongo mongo
+    ;;
+  svxlink)
+    groupadd -g 286 svxlink
+    useradd -u 286 -g svxlink -d /var/spool/svxlink -s /bin/false svxlink
+    ;;
+  sonarqube)
+    groupadd -g 287 sonar
+    useradd -g 287 -u 287 -r -c 'SonarQube user' -s /bin/bash -d /usr/share/sonarqube sonar
+    ;;
+  ykpers)
+    groupadd -g 288 yubikey
+    ;;
+  fcron)
+    groupadd -g 289 fcron
+    useradd -u 289 -g fcron -d /var/spool/fcron -M -s /bin/false fcron
+    ;;
+  taskd)
+    groupadd -g 290 taskd
+    useradd -g taskd -u 290 -d /var/lib/taskd taskd 
+    mkdir -p /var/lib/taskd
+    chown taskd:taskd /var/lib/taskd
+    chmod 700 /var/lib/taskd
+    ;;
+  x2goserver)
+    groupadd -g 291 x2gouser
+    useradd -u 291 -g 291 -c "X2Go Remote Desktop" -M -d /var/lib/x2go -s /bin/false x2gouser
+    groupadd -g 292 x2goprint
+    useradd -u 292 -g 292 -c "X2Go Remote Desktop" -m -d /var/spool/x2goprint -s /bin/false x2goprint
+    chown x2goprint:x2goprint /var/spool/x2goprint
+    chmod 0770 /var/spool/x2goprint
+    ;;
+  dnscrypt-proxy)
+    groupadd -g 293 dnscrypt
+    useradd -u 293 -g 293 -c "DNSCrypt" -d /run/dnscrypt -s /bin/false dnscrypt
+    ;;
+  conquest)
+    groupadd -g 294 conquest
+    ;;
   *)
     echo "Usage: $0 <name of package>"
     echo
     echo "This script add users and groups for packages:"
-    echo "postfix dovecot mailman privoxy lighttpd postgresql clamav amavisd-new ntop nagios avahi virtualbox pulseaudio nut znc tor exim policyd2 thttpd zabbix_server davfs2 couchdb apache-tomcat cvsd kismet cyrus-imapd dkimproxy mediatomb armagetronad quagga bitlbee jenkins nexus jboss miredo havp pcsc-lite rplay hiawatha glassfish etherpad-lite openfire zabbix_agentd bacula freeswitch opensmtpd radius roger-router prosody jabberd2 usbmux plexmediaserver elasticsearch docker wildfly icecream"
+    echo "postfix dovecot mailman privoxy lighttpd postgresql clamav amavisd-new ntop nagios avahi virtualbox pulseaudio nut znc tor exim policyd2 thttpd zabbix_server davfs2 couchdb apache-tomcat cvsd kismet cyrus-imapd dkimproxy mediatomb armagetronad quagga bitlbee jenkins nexus jboss miredo havp pcsc-lite rplay hiawatha glassfish etherpad-lite openfire zabbix_agentd bacula freeswitch opensmtpd radius roger-router prosody jabberd2 usbmux plexmediaserver elasticsearch docker wildfly icecream mongodb svxlink sonarqube ykpers fcron taskd x2goserver dnscrypt-proxy conquest"
     exit 0
     ;;
 esac

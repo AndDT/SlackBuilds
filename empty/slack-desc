@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+     |-----handy-ruler------------------------------------------------------|
+empty: empty (Run applications under pseudo-terminal sessions)
+empty:
+empty: run applications under pseudo-terminal (PTY) sessions and
+empty: replace TCL/Expect with a simple tool under your favorite shell (sh,
+empty: bash, csh, tcsh, ksh, zsh, etc)
+empty:
+empty:                              WARNING!
+empty: ---------------------------------------------------------------------
+empty: This version of the software has BUGS, so be careful and use it on
+empty:                           your own risk!
+empty: ---------------------------------------------------------------------

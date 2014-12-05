@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+   |-----handy-ruler------------------------------------------------------|
+bam: bam (A fast and flexible build system using Lua)
+bam:
+bam: Bam is a build system with the focus on being having fast build times
+bam: and flexiable build scripts. Instead of having a custom language it
+bam: uses Lua to describe the build steps. It's written in clean C and
+bam: is distrubuted under the liberal zlib licence. Available on many
+bam: platforms including but not limited to Linux, Mac OS X and Windows.
+bam:
+bam:
+bam: Project Page: http://github.com/matricks/bam
+bam:

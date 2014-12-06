@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+iocane: iocane (Simulate X11 mouse events from keyboard)
+iocane:
+iocane: Iocane simulates mouse events from the keyboard.  Iocane can be
+iocane: passed a few parameters which - ideally - could each have a key
+iocane: binding in your favorite window manager.
+iocane:
+iocane:
+iocane:
+iocane:
+iocane: Project page: https://github.com/TrilbyWhite/Iocane
+iocane:

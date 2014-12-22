@@ -1,0 +1,139 @@
+#!/bin/sh
+
+# Slackware build script for ppsspp
+
+# Copyright 2014, Andrew Tkalia <anddt@ukr.net>, Ukraine, Kyiv
+# All rights reserved.
+#
+# Redistribution and use of this script, with or without modification, is
+# permitted provided that the following conditions are met:
+#
+# 1. Redistributions of this script must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#
+#  THIS SOFTWARE IS PROVIDED BY THE AUTHOR "AS IS" AND ANY EXPRESS OR IMPLIED
+#  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+#  MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO
+#  EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+#  PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+#  OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+#  WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+#  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+#  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+PRGNAM=ppsspp
+VERSION=${VERSION:-0.9.9.1}
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i686 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -mtune=generic"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf ppsspp* native
+
+#_git_addr=${_git_addr:-"git://github.com/hrydgard"}
+_git_addr=${_git_addr:-"file:///home/anddt/git"}
+git clone --branch master ${_git_addr}/ppsspp.git ppsspp
+git clone ${_git_addr}/ppsspp-lang.git ppsspp-lang
+git clone ${_git_addr}/ppsspp-ffmpeg.git ppsspp-ffmpeg
+git clone ${_git_addr}/native.git native
+
+cd ppsspp
+
+git checkout v$VERSION
+git config submodule.ffmpeg.url ../ppsspp-ffmpeg
+git submodule update ffmpeg
+git config submodule.lang.url ../ppsspp-lang
+git submodule update lang
+git config submodule.native.url ../native
+git submodule update native
+
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
+  -o -perm 511 \) -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
+ -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+mkdir -p build
+cd build
+cmake \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+..
+make $NUMJOBS || make || exit 1
+
+install -Dm755 PPSSPPSDL "$PKG"/usr/libexec/ppsspp/PPSSPPSDL
+cp -rv assets "$PKG"/usr/libexec/ppsspp/
+install -Dm644 ../assets/icon.svg "$PKG"/usr/share/icons/hicolor/scalable/apps/ppsspp.svg
+cp -rv ../assets/unix-icons/hicolor "$PKG"/usr/share/icons
+
+cat <<_EOF_ >ppsspp.desktop
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PPSSPP
+GenericName=PSP Emulator
+Comment=PlayStation Portable Simulator Suitable for Playing Portably (PPSSPP)
+Exec=/usr/libexec/ppsspp/PPSSPPSDL %f
+Icon=ppsspp
+Categories=Game
+_EOF_
+
+cat <<_EOF_ >ppsspp
+#!/bin/sh
+
+cd /usr/libexec/ppsspp/
+./PPSSPPSDL
+_EOF_
+
+install -Dm644 ppsspp.desktop "$PKG"/usr/share/applications/ppsspp.desktop
+install -Dm755 ppsspp "$PKG"/usr/bin/ppsspp
+
+gzip ../debian/ppsspp.1
+install -Dm644 ../debian/ppsspp.1.gz "$PKG"/usr/man/man1/ppsspp.1.gz
+
+cd ..
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a \
+  README* LICENSE* \
+  $PKG/usr/doc/$PRGNAM-$VERSION || true
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
+
+cd $PKG
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

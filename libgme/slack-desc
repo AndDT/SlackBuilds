@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+libgme: libgme (Video game music file emulation/playback library)
+libgme:
+libgme: Game_Music_Emu is a collection of video game music file emulators that
+libgme: support the following formats and systems:
+libgme: AY (ZX Spectrum/Amstrad CPC), GBS (Nintendo Game Boy), GYM
+libgme: (Sega Genesis/Mega Drive), HES (NEC TurboGrafx-16/PC Engine),
+libgme: KSS (MSX Home Computer/other Z80 systems (doesn't support FM sound)),
+libgme: NSF/NSFE (Nintendo NES/Famicom (with VRC 6, Namco 106, and FME-7
+libgme: sound)), SAP (Atari systems using POKEY sound chip), SPC (Super
+libgme: Nintendo/Super Famicom) VGM/VGZ (Sega Master System/Mark III,
+libgme: Sega Genesis/Mega Drive,BBC Micro)

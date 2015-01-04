@@ -26,6 +26,7 @@ PRGNAM=wxGTK3
 VERSION=${VERSION:-3.0.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+NUMJOBS=${NUMJOBS:--j2}
 
 SRCNAM=wxWidgets
 
@@ -71,6 +72,8 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+patch -p1 < $CWD/wxGTK-collision.patch
+
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -87,18 +90,11 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-webview \
   --build=$ARCH-slackware-linux
 
-make
+make $NUMJOBS || make
 make install DESTDIR=$PKG
 
 find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
-
-# Now let's fix the broken symlink created by the package
-ln -fs /usr/lib${LIBDIRSUFFIX}/wx/config/gtk2-unicode-3.0 \
-       $PKG/usr/bin/wx-3.0-config
-
-rm -rf $PKG/usr/bin/wx-config
-rm -rf $PKG/usr/bin/wxrc
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a docs/* $PKG/usr/doc/$PRGNAM-$VERSION

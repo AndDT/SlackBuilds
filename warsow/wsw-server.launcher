@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /usr/libexec/warsow
+./wsw_server +set fs_basepath /usr/share/warsow +set fs_usehomedir 1 "${@}"
+exit $?

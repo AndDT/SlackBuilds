@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Warsow
+Comment=Free online multiplayer competitive FPS based on the Qfusion engine
+Icon=warsow
+Exec=/usr/games/warsow
+Terminal=false
+StartupNotify=false
+Categories=Game;ActionGame;

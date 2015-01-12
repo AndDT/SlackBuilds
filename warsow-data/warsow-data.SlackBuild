@@ -54,12 +54,6 @@ cp -av basewsw $PKG/usr/share/warsow
 find $PKG/usr/share/warsow -type d -exec chmod 755 {} \;
 find $PKG/usr/share/warsow -type f -exec chmod 644 {} \;
 
-ln -s /usr/libexec/warsow/libs $PKG/usr/share/warsow/libs
-for i in cgame game ui ; do
-  ln -s /usr/libexec/warsow/basewsw/${i}_i386.so $PKG/usr/share/warsow/basewsw
-  ln -s /usr/libexec/warsow/basewsw/${i}_x86_64.so $PKG/usr/share/warsow/basewsw
-done
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -av docs/* $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild

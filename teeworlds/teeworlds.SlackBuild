@@ -104,6 +104,9 @@ ln -sf /opt/$PRGNAM/$PRGNAM $PRGNAM
 ln -sf /opt/$PRGNAM/$PRGNAM\_srv $PRGNAM\_srv
 )
 
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
 mkdir -p $PKG/usr/share/applications
 install -D -m644 $CWD/$PRGNAM.desktop $PKG/usr/share/applications/$PRGNAM.desktop
 

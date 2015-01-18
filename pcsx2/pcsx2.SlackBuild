@@ -2,7 +2,7 @@
 
 # Slackware build script for pcsx2
 
-# Copyright 2014, Andrew Tkalia <anddt@yandex.ua>, Ukraine, Kyiv
+# Copyright 2014-2015, Andrew Tkalia <anddt@ukr.net>, Ukraine, Kyiv
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,9 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=pcsx2
-VERSION=${VERSION:-1.2.1_r5875}
-SRCVER=$(echo $VERSION |tr _ -)
-BUILD=${BUILD:-1}
+VERSION=${VERSION:-1.2.2}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 
 if [ -z "$ARCH" ]; then
@@ -60,10 +59,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$SRCVER-sources
-mkdir $PRGNAM-$SRCVER-sources
-cd $PRGNAM-$SRCVER-sources
-7z x $CWD/$PRGNAM-$SRCVER-sources.7z
+rm -rf $PRGNAM-$VERSION
+tar zxvf $CWD/v${VERSION}.tar.gz
+cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -77,13 +75,15 @@ cd build
     -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DMAN_INSTALL_DIR=/usr/man \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_BUILD_STRIP=FALSE \
-    -DFORCE_INTERNAL_ALL=TRUE \
-    -DPACKAGE_MODE=TRUE \
+    -DGLSL_API=ON \
+    -DREBUILD_SHADER=ON \
+    -DPACKAGE_MODE=ON \
+    -DXDG_STD=ON \
     -DPLUGIN_DIR="/usr/lib${LIBDIRSUFFIX}/pcsx2" \
-    -DGAMEINDEX_DIR="/var/games/pcsx2"
+    -DGAMEINDEX_DIR="/var/games/pcsx2" \
+    -DwxWidgets_CONFIG_EXECUTABLE="/usr/lib${LIBDIRSUFFIX}/wx/config/gtk2-unicode-release-2.8" \
+    -DwxWidgets_wxrc_EXECUTABLE="/usr/bin/wxrc-2.8" 
   make 
   make install DESTDIR=$PKG
 cd ..

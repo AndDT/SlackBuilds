@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Q2pro-sw
+GenericName=Quake 2 client that uses software renderer
+Exec=q2pro-sw
+Icon=q2pro.png
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;

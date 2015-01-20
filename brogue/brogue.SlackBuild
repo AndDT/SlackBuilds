@@ -2,7 +2,7 @@
 
 # Slackware build script for brogue
 
-# Copyright 2014, Andrew Tkalia <anddt@yandex.ua>, Ukraine, Kyiv
+# Copyright 2014-2015, Andrew Tkalia <anddt@ukr.net>, Ukraine, Kyiv
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=brogue
-VERSION=${VERSION:-1.7.3}
+VERSION=${VERSION:-1.7.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -59,9 +59,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-linux-$VERSION
-tar xvf $CWD/$PRGNAM-linux-$VERSION.tar.gz
-cd $PRGNAM-linux-$VERSION/$PRGNAM-$VERSION
+rm -rf $PRGNAM-$VERSION
+tar jxvf $CWD/$PRGNAM-$VERSION-linux-i386.tbz2
+cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -80,6 +80,8 @@ chmod -R g+rw "$_dest_dir"
 install -Dm755 bin/brogue "$_dest_dir"
 install -Dm755 bin/keymap "$_dest_dir"
 install -T -D -m 755 "$CWD/brogue.sh" "$PKG/usr/bin/$PRGNAM"
+install -Dm644 bin/brogue-icon.png $PKG/usr/share/icons/hicolor/256x256/apps/brogue.png
+install -Dm644 $CWD/brogue.desktop $PKG/usr/share/applications/brogue.desktop
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
@@ -92,6 +94,7 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
+cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+    |-----handy-ruler------------------------------------------------------|
+fish: fish (Smart and user friendly shell)
+fish:
+fish: fish is a smart and user-friendly command line shell for OS X, Linux,
+fish: and the rest of the family. fish includes features like syntax
+fish: highlighting, autosuggest-as-you-type, and fancy tab completions that
+fish: just work, with no configuration required.
+fish:
+fish: Detailed user documentation is available by running `help` within
+fish: fish, and also at http://fishshell.com/docs/2.1/index.html
+fish:
+fish:

@@ -24,7 +24,7 @@
 
 PRGNAM=fish
 VERSION=${VERSION:-2.1.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 
 NUMJOBS=${NUMJOBS:--j2}
@@ -92,13 +92,7 @@ make DESTDIR=$PKG install
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-cd $PKG/usr/share/fish/man/man1
-  for i in `ls` ; do mv $i fish-${i} ; done
-cd -
-
-mv $PKG/usr/share/fish/man/man1/* $PKG/usr/man/man1
-rm -rf $PKG/usr/share/fish/man
-find $PKG/usr/man -type f -exec gzip -9 {} \;
+find $PKG/usr/man $PKG/usr/share/fish/man/man1 -type f -exec gzip -9 {} \;
 
 mv $PKG/etc/fish/config.fish $PKG/etc/fish/config.fish.new
 

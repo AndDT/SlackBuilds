@@ -11,3 +11,6 @@ Something like this will suffice for most systems:
   useradd -u 274 -g 274 -s /sbin/nologin -d /var/lib/prosody prosody
 Feel free to use a different uid and gid if desired, but 274 is
 recommended to avoid conflicts with other stuff from SlackBuilds.org.
+
+You can run prosody with luajit (with some extra performance),
+run the script with RUNWITH=luajit. It will then depend on luajit.

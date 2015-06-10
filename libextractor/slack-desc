@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+            |-----handy-ruler------------------------------------------------------|
+libextractor: libextractor ()
+libextractor:
+libextractor: GNU libextractor is a library used to extract meta data from files of
+libextractor: arbitrary type.  It is designed to use helper-libraries to perform the
+libextractor: actual extraction, and to be trivially extendable by linking against
+libextractor: external extractors for additional file types.  Common use-cases for
+libextractor: GNU libextractor include detail-views in file managers, detailed
+libextractor: search results in file-sharing networks and general information
+libextractor: gathering in forensics investigations and penetration testing.
+libextractor:
+libextractor: Project page: http://gnunet.org/libextractor/

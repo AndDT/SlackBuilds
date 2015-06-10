@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+gnunet: gnunet (A framework for secure peer-to-peer networking)
+gnunet:
+gnunet: GNUnet is peer-to-peer framework focusing on security.  The first and
+gnunet: primary application for GNUnet is anonymous file-sharing.  GNUnet is
+gnunet: currently developed by a worldwide group of independent free software
+gnunet: developers.  GNUnet is a GNU package (http://www.gnu.org/).
+gnunet:
+gnunet: This is an ALPHA release.  There are known and significant bugs as
+gnunet: well as many missing features in this release.
+gnunet:
+gnunet: Project page: https://gnunet.org/

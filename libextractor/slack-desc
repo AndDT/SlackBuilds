@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
             |-----handy-ruler------------------------------------------------------|
-libextractor: libextractor ()
+libextractor: libextractor (extract meta-data from files of arbitrary type)
 libextractor:
 libextractor: GNU libextractor is a library used to extract meta data from files of
 libextractor: arbitrary type.  It is designed to use helper-libraries to perform the

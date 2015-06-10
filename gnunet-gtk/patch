@@ -1,0 +1,22 @@
+--- ./gnunet-gtk-0.10.1/src/lib/eventloop.c	2014-02-13 17:26:55.000000000 +0200
++++ ./gnunet-gtk-0.10.1/src/lib/eventloop.c.new	2015-06-10 23:38:48.000000000 +0300
+@@ -198,7 +198,7 @@
+              plugid);
+     return main_window;
+   }
+-  plug = gtk_plug_new ((Window) id);
++  plug = gtk_plug_new (id);
+   child = gtk_bin_get_child (GTK_BIN (main_window));
+   gtk_widget_reparent (child,
+                        plug);
+--- ./gnunet-gtk-0.10.1/src/main/gnunet-gtk.c	2014-04-08 10:44:56.000000000 +0300
++++ ./gnunet-gtk-0.10.1/src/main/gnunet-gtk.c.new	2015-06-10 23:42:36.000000000 +0300
+@@ -187,7 +187,7 @@
+ start_process (struct Plug *p)
+ {
+   char window_id[128];
+-  Window w;
++  GdkNativeWindow w;
+ 
+   w = gtk_socket_get_id (GTK_SOCKET (p->s));
+   GNUNET_snprintf (window_id,

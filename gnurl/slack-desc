@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+     |-----handy-ruler------------------------------------------------------|
+gnurl: gnurl (fork of libcurl, which is mostly for GNUnet)
+gnurl:
+gnurl: The goal for libgnurl is to support only HTTP and HTTPS (and only
+gnurl: HTTP 1.x) with a single crypto backend (GnuTLS) to ensure a small
+gnurl: footprint and uniform experience for developers regardless of how
+gnurl: libcurl was compiled.
+gnurl:
+gnurl:
+gnurl:
+gnurl: Project page: https://gnunet.org/gnurl
+gnurl:

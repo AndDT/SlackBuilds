@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=slade
-VERSION=${VERSION:-3.1.0.1}
+VERSION=${VERSION:-3.1.0.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 NUMJOBS=${NUMJOBS:--j2}
@@ -42,16 +42,16 @@ PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
 if [ "$ARCH" = "i486" ]; then
-  SLKCFLAGS="-O2 -march=i486 -mtune=i686 -DNDEBUG"
+  SLKCFLAGS="-O2 -march=i486 -mtune=i686 -DNDEBUG -msse"
   LIBDIRSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
-  SLKCFLAGS="-O2 -march=i686 -mtune=i686 -DNDEBUG"
+  SLKCFLAGS="-O2 -march=i686 -mtune=i686 -DNDEBUG -msse"
   LIBDIRSUFFIX=""
 elif [ "$ARCH" = "x86_64" ]; then
-  SLKCFLAGS="-O2 -fPIC -DNDEBUG"
+  SLKCFLAGS="-O2 -fPIC -DNDEBUG -msse"
   LIBDIRSUFFIX="64"
 else
-  SLKCFLAGS="-O2 -DNDEBUG"
+  SLKCFLAGS="-O2 -DNDEBUG -msse"
   LIBDIRSUFFIX=""
 fi
 

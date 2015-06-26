@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+toppler: toppler (A reimplementation of the classic jump & run game "Nebulus")
+toppler:
+toppler: In this game you have to help a cute little green animal switch off
+toppler: some kind of "evil" mechanism. The "power off switch" is hidden
+toppler: somewhere in high towers. On your way to the target you need to avoid
+toppler: a lot of strange robots that guard the tower.
+toppler: The game is a reimplementation of the old game known as Tower Toppler
+toppler: or Nebulus. It was available for PC, Atari, C64. The author was
+toppler: J.M.Phillips and was published by Hewson software.
+toppler:
+toppler: Project page: http://toppler.sourceforge.net/

@@ -1,0 +1,18 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+6tunnel: 6tunnel (Tunnels IPv6 connections for IPv4-only applications)
+6tunnel:
+6tunnel: 6tunnel allows you to use services provided by IPv6 hosts with
+6tunnel: IPv4-only applications and vice-versa. It can bind to any of your
+6tunnel: IPv4 (default) or IPv6 addresses and forward all data to IPv4 or IPv6
+6tunnel: (default) host.
+6tunnel:
+6tunnel:
+6tunnel: Project page: http://toxygen.net/6tunnel/
+6tunnel:

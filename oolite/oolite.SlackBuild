@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=oolite
-VERSION=${VERSION:-1.77.1}
+VERSION=${VERSION:-1.82}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -72,21 +72,22 @@ find -L . \
 export  GNUSTEP_MAKEFILES=/usr/share/GNUstep/Makefiles
 sed -i "/ADDITIONAL_OBJCFLAGS/s/=/= -fobjc-exceptions ${SLKCFLAGS}/" GNUmakefile
 make -f libjs.make debug=no || exit 1
-make -f Makefile ESPEAK=$ESPEAK release || exit 1
+make -f Makefile ESPEAK=$ESPEAK release-deployment || exit 1
 
 mkdir -p $PKG/usr/share/applications
 mkdir -p $PKG/usr/share/icons/hicolor/48x48/apps
-mkdir -p $PKG/usr/lib${LIBDIRSUFFIX}/GNUstep/Applications
+mkdir -p $PKG/usr/share/oolite
 
-cp -r oolite.app $PKG/usr/lib${LIBDIRSUFFIX}/GNUstep/Applications/
+cp -r oolite.app/* $PKG/usr/share/oolite/
+
+install -D -m755 $CWD/oolite $PKG/usr/bin/oolite
 install -D -m644 installers/FreeDesktop/oolite-icon.png $PKG/usr/share/icons/hicolor/48x48/apps/oolite-icon.png
 install -D -m644 installers/FreeDesktop/oolite.desktop $PKG/usr/share/applications/oolite.desktop
-sed -i "s/^Exec=.*/Exec=openapp oolite/" $PKG/usr/share/applications/oolite.desktop
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
   README.txt Doc/*.{txt,TXT,pdf} \
-  $PKG/usr/doc/$PRGNAM-$VERSION
+  $PKG/usr/doc/$PRGNAM-$VERSION || true
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install

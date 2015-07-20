@@ -1,0 +1,36 @@
+--- CMakeLists.txt	2015-07-20 15:34:58.000000000 +0300
++++ CMakeLists.txt.new	2015-07-20 15:55:04.000000000 +0300
+@@ -48,7 +48,7 @@
+ # Finding the required libraries:
+ 
+ # Allegro: liballeg
+-FIND_LIBRARY(LALLEG NAMES alleg PATH "${CMAKE_LIBRARY_PATH}")
++FIND_LIBRARY(LALLEG NAMES alleg PATHS "/opt/allegro4/lib@LIBDIRSUFFIX@")
+ IF(NOT LALLEG)
+   MESSAGE(FATAL_ERROR "Fatal error: couldn't find the Allegro game programming library (liballeg)! ${RTFM}")
+ ELSE(NOT LALLEG)
+@@ -61,7 +61,7 @@
+ ENDIF(NOT LALLEG)
+ 
+ # loadpng: libloadpng, libpng and zlib
+-FIND_LIBRARY(LLOADPNG NAMES loadpng PATH "${CMAKE_LIBRARY_PATH}")
++FIND_LIBRARY(LLOADPNG NAMES loadpng PATHS "/opt/allegro4/lib@LIBDIRSUFFIX@")
+ IF(NOT LLOADPNG)
+   MESSAGE(FATAL_ERROR "Fatal error: libloadpng not found! ${RTFM}")
+ ENDIF(NOT LLOADPNG)
+@@ -77,13 +77,13 @@
+ ENDIF(NOT LZ)
+ 
+ # JPGalleg: libjpgalleg
+-FIND_LIBRARY(LJPGALLEG NAMES jpgalleg PATH "${CMAKE_LIBRARY_PATH}")
++FIND_LIBRARY(LJPGALLEG NAMES jpgalleg PATHS "/opt/allegro4/lib@LIBDIRSUFFIX@")
+ IF(NOT LJPGALLEG)
+   MESSAGE(FATAL_ERROR "Fatal error: libjpgalleg not found! ${RTFM}")
+ ENDIF(NOT LJPGALLEG)
+ 
+ # LOGG: liblogg, libogg, libvorbis, libvorbisfile
+-FIND_LIBRARY(LLOGG NAMES logg PATH "${CMAKE_LIBRARY_PATH}")
++FIND_LIBRARY(LLOGG NAMES logg PATHS "/opt/allegro4/lib@LIBDIRSUFFIX@")
+ IF(NOT LLOGG)
+   MESSAGE(FATAL_ERROR "Fatal error: liblogg not found! ${RTFM}")
+ ENDIF(NOT LLOGG)

@@ -1,0 +1,11 @@
+PRGNAM="flare"
+VERSION="0.19"
+HOMEPAGE="http://flarerpg.org/"
+DOWNLOAD="https://github.com/clintbellanger/flare-engine/archive/v0.19.tar.gz"
+MD5SUM="d8fa2839b454c031ac9bd2caa18f8591"
+DOWNLOAD_x86_64=""
+MD5SUM_x86_64=""
+REQUIRES=""
+MAINTAINER="Dimitris Zlatanidis"
+EMAIL="d.zlatanidis@gmail.com"
+

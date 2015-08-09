@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+     |-----handy-ruler------------------------------------------------------|
+9base: 9base (Port of various original Plan9 tools to unix)
+9base:
+9base: This is a port of various original Plan 9 tools for Unix, based on
+9base: plan9port (http://swtch.com/plan9port/)
+9base:
+9base:
+9base:
+9base:
+9base:
+9base: Project page: http://tools.suckless.org/9base
+9base:

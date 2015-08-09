@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+      |-----handy-ruler------------------------------------------------------|
+sscall: sscall (A simple UDP based voice chat program.)
+sscall:
+sscall: How to use it:
+sscall: Pick one of the scripts already available and just
+sscall: pipe them over to sscall, e.g.:
+sscall: /usr/libexec/sscall/linux-rec-alsa.sh | \
+sscall:   /usr/libexec/sscall/sscall 192.168.1.2 1234 4321
+sscall: 
+sscall: This will stream your voice to machine 192.168.1.2
+sscall: on port 1234.  Similarly on the other side you can
+sscall: connect on port 4321 on the local machine.

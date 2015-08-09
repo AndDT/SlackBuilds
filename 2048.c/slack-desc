@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+       |-----handy-ruler------------------------------------------------------|
+2048.c: 2048.c (Console version of the game "2048" for GNU/Linux)
+2048.c:
+2048.c: You can move the tiles in four directions using the arrow keys: up,
+2048.c: down, left, and right. All numbers on the board will slide into that
+2048.c: direction until they hit the wall and if they bump into each other
+2048.c: then two numbers will be combined into one if they have the same value.
+2048.c: Each number will only be combined once per move. Every move a new
+2048.c: number 2 or 4 appears. If you have a 2048 on the board you have won,
+2048.c: but you lose once the board is full and you cannot make a move. 
+2048.c:
+2048.c:

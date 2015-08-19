@@ -2,7 +2,7 @@
 
 # Slackware build script for minetest
 
-# Copyright 2013, Andrew Tkalia <anddt@yandex.ua>, Ukraine, Kyiv
+# Copyright 2013-2015, Andrew Tkalia <anddt@ukr.net>, Ukraine, Kyiv
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,12 +23,12 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=minetest
-VERSION=0.4.9
-GAMEVER=0.4.9
+#VERSION=0.4.12
+VERSION=20150819_1fadf7f
+#GAMEVER=20150111_d546a5a
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
-OPTIMIZE=${OPTIMIZE:-no} # It will be more stable without optimization
-FREETYPE=${FREETYPE:-ON} # Prints lots of warnings, but works
+OPTIMIZE=${OPTIMIZE:-yes} # It will be more stable without optimization
 NUMJOBS=${NUMJOBS:--j2}
 
 #for i in minetest minetest_game; do
@@ -69,13 +69,15 @@ fi
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar zxvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+rm -rf $PRGNAM
+cp -av $CWD/$PRGNAM .
+cd $PRGNAM
 
 cd games
-  tar zxvf $CWD/minetest_game-$GAMEVER.tar.gz || exit 1
-  mv `echo minetest_game*` minetest_game
+  #tar zxvf $CWD/minetest_game-$GAMEVER.tar.gz || exit 1
+  cp -av $CWD/minetest_game . || exit 1
+  #mv `echo minetest_game*` minetest_game
+  rm -rf minetest_game/.git .gitignore || exit 1
 cd ..
 
 chown -R root:root .
@@ -85,17 +87,21 @@ find . \
  \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
  -exec chmod 644 {} \;
 
-#  -DVERSION_EXTRA=${VERSION} \
-mkdir build && cd build
+mkdir build_ && cd build_
 cmake .. \
   -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
   -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DCUSTOM_DOCDIR=/usr/doc/${PRGNAM}-${VERSION} \
   -DCUSTOM_EXAMPLE_CONF_DIR=/usr/doc/${PRGNAM}-${VERSION} \
+  -DENABLE_CURL=ON \
   -DENABLE_GETTEXT=ON \
   -DCUSTOM_MANDIR=/usr/man \
-  -DENABLE_FREETYPE=${FREETYPE} \
+  -DENABLE_FREETYPE=ON \
+  -DENABLE_SPATIAL=OFF \
+  -DENABLE_LEVELDB=ON \
+  -DENABLE_SYSTEM_GMP=ON \
+  -DENABLE_LUAJIT=ON \
   -DCMAKE_BUILD_TYPE=Release || exit 1
 make $NUMJOBS || make || exit 1
 make install DESTDIR=$PKG

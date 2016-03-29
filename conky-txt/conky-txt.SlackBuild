@@ -1,0 +1,126 @@
+#!/bin/sh
+
+# Slackware build script for conky
+
+# Written by M.Dinslage  contact: daedra1980@gmail.com
+# Upgraded to 1.10.1 by anddt@ukr.net
+
+PRGNAM=conky-txt
+SRCNAM=conky
+VERSION=1.10.1
+BUILD=${BUILD:-1}
+TAG=${TAG:-_SBo}
+
+if [ -z "$ARCH" ]; then
+  case "$( uname -m )" in
+    i?86) ARCH=i486 ;;
+    arm*) ARCH=arm ;;
+       *) ARCH=$( uname -m ) ;;
+  esac
+fi
+
+CWD=$(pwd)
+TMP=${TMP:-/tmp/SBo}
+PKG=$TMP/package-$PRGNAM
+OUTPUT=${OUTPUT:-/tmp}
+
+if [ "$ARCH" = "i486" ]; then
+  SLKCFLAGS="-O2 -march=i486 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "i686" ]; then
+  SLKCFLAGS="-O2 -march=i686 -mtune=i686"
+  LIBDIRSUFFIX=""
+elif [ "$ARCH" = "x86_64" ]; then
+  SLKCFLAGS="-O2 -fPIC"
+  LIBDIRSUFFIX="64"
+else
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX=""
+fi
+
+set -e
+
+rm -rf $PKG
+mkdir -p $TMP $PKG $OUTPUT
+cd $TMP
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/v$VERSION.tar.gz
+cd $SRCNAM-$VERSION
+chown -R root:root .
+find -L . \
+ \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 -o -perm 511 \) \
+ -exec chmod 755 {} \; -o \
+ \( -perm 666 -o -perm 664 -o -perm 600 -o -perm 444 -o -perm 440 -o -perm 400 \) \
+ -exec chmod 644 {} \;
+
+sed -e "s:include(CheckIncludeFiles):include(CheckIncludeFiles)\ninclude(CheckIncludeFile):g" -i ./cmake/ConkyPlatformChecks.cmake
+
+mkdir -p build
+cd build
+    CMAKE_INCLUDE_PATH="/usr/include" cmake \
+    -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_APCUPSD:BOOL=ON \
+    -DBUILD_ARGB:BOOL=ON \
+    -DBUILD_AUDACIOUS:BOOL=ON \
+    -DBUILD_BMPX:BOOL=OFF \
+    -DBUILD_BUILTIN_CONFIG:BOOL=ON \
+    -DBUILD_CMUS:BOOL=OFF \
+    -DBUILD_CURL:BOOL=ON \
+    -DBUILD_EVE:BOOL=OFF \
+    -DBUILD_HDDTEMP:BOOL=ON \
+    -DBUILD_HTTP:BOOL=OFF \
+    -DBUILD_I18N:BOOL=ON \
+    -DBUILD_IBM:BOOL=ON \
+    -DBUILD_ICAL:BOOL=OFF \
+    -DBUILD_ICONV:BOOL=OFF \
+    -DBUILD_IMLIB2:BOOL=OFF \
+    -DBUILD_IOSTATS:BOOL=ON \
+    -DBUILD_IPV6:BOOL=ON \
+    -DBUILD_IRC:BOOL=OFF \
+    -DBUILD_LUA_CAIRO:BOOL=OFF \
+    -DBUILD_LUA_IMLIB2:BOOL=OFF \
+    -DBUILD_LUA_RSVG:BOOL=OFF \
+    -DBUILD_MATH:BOOL=ON \
+    -DBUILD_MOC:BOOL=ON \
+    -DBUILD_MPD:BOOL=ON \
+    -DBUILD_MYSQL:BOOL=OFF \
+    -DBUILD_NCURSES:BOOL=OFF \
+    -DBUILD_NVIDIA:BOOL=OFF \
+    -DBUILD_OLD_CONFIG:BOOL=ON \
+    -DBUILD_PORT_MONITORS:BOOL=ON \
+    -DBUILD_RSS:BOOL=ON \
+    -DBUILD_WEATHER_METAR:BOOL=ON \
+    -DBUILD_WEATHER_XOAP:BOOL=ON \
+    -DBUILD_WLAN:BOOL=ON \
+    -DBUILD_X11:BOOL=OFF \
+    -DBUILD_XDAMAGE:BOOL=OFF \
+    -DBUILD_XDBE:BOOL=OFF \
+    -DBUILD_XFT:BOOL=OFF \
+    -DBUILD_XMMS2:BOOL=OFF \
+    -DBUILD_XSHAPE:BOOL=OFF \
+    -DDEFAULT_TEXT_BUFFER_SIZE:STRING=256 \
+    -DLEAKFREE_NCURSES:BOOL=OFF \
+    -DLOCALE_DIR:STRING=/usr/share/locale \
+    -DMAINTAINER_MODE:BOOL=OFF \
+    -DMAX_NET_INTERFACES:STRING=64 \
+    -DMAX_USER_TEXT_DEFAULT:STRING=16384 \
+    -DOWN_WINDOW:BOOL=OFF \
+    -DPACKAGE_LIBRARY_DIR:STRING=/usr/lib${LIBDIRSUFFIX}/conky \
+    -DCMAKE_BUILD_TYPE=Release ..
+  make 
+
+  install -Dm755 ./src/conky $PKG/usr/bin/conky-txt
+  strip --strip-unneeded $PKG/usr/bin/conky-txt
+
+cd ..
+
+mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
+cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
+
+mkdir -p $PKG/install
+cat $CWD/slack-desc > $PKG/install/slack-desc
+
+cd $PKG
+/sbin/makepkg -l y -c n -p $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}

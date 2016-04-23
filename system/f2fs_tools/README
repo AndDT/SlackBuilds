@@ -1,0 +1,3 @@
+Userland tools for the f2fs filesystem.
+
+use git clone --mirror git://git.kernel.org/pub/scm/linux/kernel/git/jaegeuk/f2fs-tools.git in SlackBuild directory to obtain sources

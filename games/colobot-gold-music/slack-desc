@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                  |-----handy-ruler------------------------------------------------------|
+colobot-gold-music: colobot-gold-music (Music pack for Colobot GOLD RTS game.)
+colobot-gold-music:
+colobot-gold-music: Colobot: Gold Edition is a real-time strategy game, where you can
+colobot-gold-music: program your units (bots) in a language called CBOT, which is similar
+colobot-gold-music: to C++ and Java. Your mission is to find a new planet to live and
+colobot-gold-music: survive. You can save the humanity and get programming skills!
+colobot-gold-music:
+colobot-gold-music:
+colobot-gold-music:
+colobot-gold-music: Project page: http://colobot.info
+colobot-gold-music:
